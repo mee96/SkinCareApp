@@ -2,8 +2,11 @@ from fastapi import FastAPI, Depends
 from sqlalchemy import text
 from sqlalchemy.orm import Session
 from app.core.database import get_db
+from app.routers import user
 
 app = FastAPI(title="SkinCareApp API")
+
+app.include_router(user.router)
 
 
 @app.get("/health")
