@@ -7,8 +7,21 @@ from sqlalchemy.orm import Session
 from app.core.database import get_db
 import app.models  # registra tots els models SQLAlchemy (evita NoReferencedTableError)
 from app.routers import user, product, concern, schedule, routine_step_def, step_log, catalog
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="SkinCareApp API")
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:4200",                     # Angular en local
+        "https://skincareapp-frontend.onrender.com",  # quan despleguis el front (canvia-ho pel real)
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app.include_router(user.router)
 app.include_router(product.router)
