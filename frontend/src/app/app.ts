@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { LucideAngularModule, Sun, Moon } from 'lucide-angular';
+import { LucideAngularModule, Sun, Moon, User } from 'lucide-angular';
 
 @Component({
   selector: 'app-root',
@@ -12,11 +12,11 @@ import { LucideAngularModule, Sun, Moon } from 'lucide-angular';
 })
 export class App {
   readonly isDark = signal(false);
+  readonly iconSize = 18;
 
-  // referències a les icones, per fer-les servir al template
   readonly SunIcon = Sun;
   readonly MoonIcon = Moon;
-  readonly iconSize = 18;
+  readonly UserIcon = User;
 
   toggleTheme(): void {
     this.isDark.update((v) => !v);

@@ -1,4 +1,9 @@
 <header class="topbar">
+
+  <a routerLink="/perfil" class="icon-btn" routerLinkActive="active-link">
+    <lucide-icon [img]="UserIcon" [size]="iconSize" />
+  </a>
+
   <button (click)="toggleTheme()">
     <lucide-icon [img]="isDark() ? SunIcon : MoonIcon" />
   </button>
@@ -12,6 +17,5 @@
   <a routerLink="/avui" routerLinkActive="on">Avui</a>
   <a routerLink="/calendari" routerLinkActive="on">Mes</a>
   <a routerLink="/stock" routerLinkActive="on">Stock</a>
-  <a routerLink="/perfil" routerLinkActive="on">Perfil</a>
   <a routerLink="/aprendre" routerLinkActive="on">Aprendre</a>
 </nav>
