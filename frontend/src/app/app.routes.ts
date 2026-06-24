@@ -5,6 +5,6 @@ export const routes: Routes = [
   { path: 'stock', loadComponent: () => import('./features/stock/stock-page').then(m => m.StockPage) },
   { path: 'avui', loadComponent: () => import('./features/today/today-page').then(m => m.TodayPage) },
   { path: 'calendari', redirectTo: 'stock' },
-  { path: 'perfil', redirectTo: 'stock' },
+  { path: 'perfil', loadComponent: () => import('./features/profile/profile-page').then(m => m.ProfilePage) },
   { path: 'aprendre', redirectTo: 'stock' },
 ];

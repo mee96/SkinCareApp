@@ -1,0 +1,31 @@
+@if (loading()) {
+  <p class="state-msg">Carregant el teu perfil...</p>
+} @else {
+  <div class="profile-card">
+    <h2 class="section-title">Tipus de pell</h2>
+    <div class="chip-row">
+      @for (opt of skinTypeOptions; track opt.value) {
+        <button
+          class="chip"
+          [class.active]="skinType() === opt.value"
+          (click)="selectSkinType(opt.value)"
+        >
+          {{ opt.label }}
+        </button>
+      }
+    </div>
+
+    <h2 class="section-title">Què et preocupa?</h2>
+    <div class="chip-row">
+      @for (opt of concernOptions; track opt.value) {
+        <button
+          class="chip"
+          [class.active]="activeConcernTypes().has(opt.value)"
+          (click)="toggleConcern(opt.value)"
+        >
+          {{ opt.emoji }} {{ opt.label }}
+        </button>
+      }
+    </div>
+  </div>
+}
