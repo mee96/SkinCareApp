@@ -1,10 +1,9 @@
 import { ChangeDetectionStrategy, Component, inject, signal, computed, OnInit } from '@angular/core';
 import { UserApi } from '../../core/services/user';
 import { ConcernApi } from '../../core/services/concern';
+import { AuthStore } from '../../core/stores/auth-store';
 import { SkinType } from '../../core/models/user';
 import { Concern, ConcernType } from '../../core/models/concern';
-
-const USER_ID = 'test-uid-001'; // TODO: vindrà de l'AuthStore
 
 const SKIN_TYPES: { value: SkinType; label: string }[] = [
   { value: 'mixta', label: 'Mixta' },
@@ -29,11 +28,12 @@ const CONCERN_TYPES: { value: ConcernType; label: string; emoji: string }[] = [
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './profile-page.html',
-  styleUrl: './profile-page.css',
+  styleUrls: ['../../shared/ui/chips.css', './profile-page.css'],
 })
 export class ProfilePage implements OnInit {
   private userApi = inject(UserApi);
   private concernApi = inject(ConcernApi);
+  private authStore = inject(AuthStore);
 
   readonly loading = signal(true);
   readonly skinType = signal<SkinType | null>(null);
@@ -47,10 +47,16 @@ export class ProfilePage implements OnInit {
   );
 
   ngOnInit(): void {
-    this.userApi.getById(USER_ID).subscribe({
+    const uid = this.authStore.uid();
+    if (!uid) {
+      this.loading.set(false);
+      return;
+    }
+
+    this.userApi.getById(uid).subscribe({
       next: (user) => {
         this.skinType.set(user.skin_type);
-        this.concernApi.getByUser(USER_ID).subscribe({
+        this.concernApi.getByUser(uid).subscribe({
           next: (concerns) => {
             this.concerns.set(concerns);
             this.loading.set(false);
@@ -62,18 +68,24 @@ export class ProfilePage implements OnInit {
   }
 
   selectSkinType(type: SkinType): void {
+    const uid = this.authStore.uid();
+    if (!uid) return;
+
     this.skinType.set(type); // actualització immediata a la UI
-    this.userApi.updateSkinType(USER_ID, type).subscribe();
+    this.userApi.updateSkinType(uid, type).subscribe();
   }
 
   toggleConcern(type: ConcernType): void {
+    const uid = this.authStore.uid();
+    if (!uid) return;
+
     const existing = this.concerns().find((c) => c.concern_type === type);
 
     if (existing) {
       this.concerns.update((list) => list.filter((c) => c.id !== existing.id));
       this.concernApi.remove(existing.id).subscribe();
     } else {
-      this.concernApi.add(USER_ID, type).subscribe({
+      this.concernApi.add(uid, type).subscribe({
         next: (newConcern) => {
           this.concerns.update((list) => [...list, newConcern]);
         },

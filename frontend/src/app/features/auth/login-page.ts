@@ -9,7 +9,7 @@ import { AuthStore } from '../../core/stores/auth-store';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormsModule, RouterLink],
   templateUrl: './login-page.html',
-  styleUrl: './login-page.css',
+  styleUrls: ['../../shared/ui/auth-card.css', './login-page.css'],
 })
 export class LoginPage {
   private authStore = inject(AuthStore);

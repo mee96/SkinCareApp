@@ -4,12 +4,11 @@ import { Schedule } from '../../core/services/schedule';
 import { StepDefApi } from '../../core/services/step-def';
 import { StepLogApi } from '../../core/services/step-log';
 import { StepDef } from '../../core/models/step-def';
+import { AuthStore } from '../../core/stores/auth-store';
 
 interface StepView extends StepDef {
   done: boolean;
 }
-
-const USER_ID = 'test-uid-001'; // TODO: vindrà de l'AuthStore
 
 const TYPE_LABELS: Record<string, string> = {
   R: '💧 Retinal',
@@ -30,6 +29,7 @@ export class TodayPage implements OnInit {
   private scheduleApi = inject(Schedule);
   private stepDefApi = inject(StepDefApi);
   private stepLogApi = inject(StepLogApi);
+  private authStore = inject(AuthStore);
 
   readonly SunIcon = Sun;
   readonly MoonIcon = Moon;
@@ -52,18 +52,25 @@ export class TodayPage implements OnInit {
     const { done, total } = this.progress();
     return total ? Math.round((done / total) * 100) : 0;
   });
+
   readonly formattedDate = computed(() => {
-  const date = new Date(this.today + 'T00:00:00');
-  const formatted = date.toLocaleDateString('ca-ES', {
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long',
+    const date = new Date(this.today + 'T00:00:00');
+    const formatted = date.toLocaleDateString('ca-ES', {
+      weekday: 'long',
+      day: 'numeric',
+      month: 'long',
+    });
+    return formatted.charAt(0).toUpperCase() + formatted.slice(1);
   });
-  return formatted.charAt(0).toUpperCase() + formatted.slice(1);
-});
 
   ngOnInit(): void {
-    this.scheduleApi.getForDate(USER_ID, this.today).subscribe({
+    const uid = this.authStore.uid();
+    if (!uid) {
+      this.loading.set(false);
+      return;
+    }
+
+    this.scheduleApi.getForDate(uid, this.today).subscribe({
       next: (days) => {
         const type = days[0]?.routine_type_code ?? null;
         this.routineType.set(type);
@@ -73,9 +80,9 @@ export class TodayPage implements OnInit {
           return;
         }
 
-        this.stepDefApi.getByType(USER_ID, type).subscribe({
+        this.stepDefApi.getByType(uid, type).subscribe({
           next: (defs) => {
-            this.stepLogApi.getForDate(USER_ID, this.today).subscribe({
+            this.stepLogApi.getForDate(uid, this.today).subscribe({
               next: (logs) => {
                 const doneIds = new Set(logs.map((l) => l.step_def_id));
                 const merged: StepView[] = defs
@@ -93,7 +100,10 @@ export class TodayPage implements OnInit {
   }
 
   toggleStep(step: StepView): void {
-    this.stepLogApi.toggle(USER_ID, this.today, step.id).subscribe({
+    const uid = this.authStore.uid();
+    if (!uid) return;
+
+    this.stepLogApi.toggle(uid, this.today, step.id).subscribe({
       next: (result) => {
         this.steps.update((list) =>
           list.map((s) => (s.id === step.id ? { ...s, done: result.done } : s))
