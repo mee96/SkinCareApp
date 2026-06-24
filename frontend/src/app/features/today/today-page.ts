@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, signal, computed, OnInit } from '@angular/core';
+import { LucideAngularModule, Sun, Moon, Check } from 'lucide-angular';
 import { Schedule } from '../../core/services/schedule';
 import { StepDefApi } from '../../core/services/step-def';
 import { StepLogApi } from '../../core/services/step-log';
@@ -8,12 +9,20 @@ interface StepView extends StepDef {
   done: boolean;
 }
 
-const USER_ID = 'test-uid-001'; // TODO: vindrà de l'AuthStore quan tinguem login
+const USER_ID = 'test-uid-001'; // TODO: vindrà de l'AuthStore
+
+const TYPE_LABELS: Record<string, string> = {
+  R: '💧 Retinal',
+  C: '👁️ Contorn',
+  H: '🌸 Hidratació',
+  P: '🧖 Pegats',
+};
 
 @Component({
   selector: 'app-today-page',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [LucideAngularModule],
   templateUrl: './today-page.html',
   styleUrl: './today-page.css',
 })
@@ -22,11 +31,16 @@ export class TodayPage implements OnInit {
   private stepDefApi = inject(StepDefApi);
   private stepLogApi = inject(StepLogApi);
 
+  readonly SunIcon = Sun;
+  readonly MoonIcon = Moon;
+  readonly CheckIcon = Check;
+
   readonly today = new Date().toISOString().slice(0, 10);
   readonly loading = signal(true);
   readonly routineType = signal<string | null>(null);
   readonly steps = signal<StepView[]>([]);
 
+  readonly typeLabel = computed(() => TYPE_LABELS[this.routineType() ?? ''] ?? '');
   readonly amSteps = computed(() => this.steps().filter((s) => s.moment === 'am'));
   readonly pmSteps = computed(() => this.steps().filter((s) => s.moment === 'pm'));
   readonly progress = computed(() => {
@@ -34,6 +48,19 @@ export class TodayPage implements OnInit {
     const done = all.filter((s) => s.done).length;
     return { done, total: all.length };
   });
+  readonly progressPct = computed(() => {
+    const { done, total } = this.progress();
+    return total ? Math.round((done / total) * 100) : 0;
+  });
+  readonly formattedDate = computed(() => {
+  const date = new Date(this.today + 'T00:00:00');
+  const formatted = date.toLocaleDateString('ca-ES', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+  });
+  return formatted.charAt(0).toUpperCase() + formatted.slice(1);
+});
 
   ngOnInit(): void {
     this.scheduleApi.getForDate(USER_ID, this.today).subscribe({

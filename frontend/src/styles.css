@@ -29,6 +29,11 @@
   --primary:       var(--pink-400);
   --text:          var(--ink-900);
   --text-soft:     var(--ink-500);
+
+    --am-bg:   #fff3d6;
+--am-text: #c99a3a;
+--pm-bg:   #e3e7f7;
+--pm-text: #5566a8;
 }
 
 /* ---- Rols semàntics (MODE FOSC) ---- */
@@ -40,6 +45,7 @@
   --text:      #f3e3e9;
   --text-soft: #c4a3b0;
   /* la paleta crua i els tipus de nit es queden igual */
+
 }
 
 /* base */

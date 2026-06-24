@@ -1,28 +1,60 @@
 @if (loading()) {
-  <p>Carregant la teva rutina d'avui...</p>
+  <p class="state-msg">Carregant la teva rutina d'avui...</p>
 } @else if (!routineType()) {
-  <p>Encara no tens cap rutina assignada per avui.</p>
+  <p class="state-msg">Encara no tens cap rutina assignada per avui.</p>
 } @else {
-  <h1>Avui · {{ routineType() }}</h1>
-  <p class="progress">{{ progress().done }}/{{ progress().total }} passos</p>
+  <div class="today-card">
+    <div class="card-head">
+  <span class="day-label">{{ formattedDate() }}</span>
+  <span class="type-pill" [class]="'type-' + routineType()">
+    {{ typeLabel() }}
+  </span>
+</div>
 
-  <h2>☀️ Matí</h2>
-  <ul>
-    @for (step of amSteps(); track step.id) {
-      <li (click)="toggleStep(step)" [class.done]="step.done">
-        <span class="box">{{ step.done ? '✓' : '' }}</span>
-        {{ step.slot_id }}
-      </li>
-    }
-  </ul>
+    <div class="progress-bar">
+      <div class="progress-fill" [style.width.%]="progressPct()"></div>
+    </div>
+    <p class="progress-text">
+      {{ progress().done }}/{{ progress().total }} passos
+      @if (progress().done === progress().total && progress().total > 0) {
+        <span class="complete-badge">⭐ complet!</span>
+      }
+    </p>
 
-  <h2>🌙 Nit</h2>
-  <ul>
-    @for (step of pmSteps(); track step.id) {
-      <li (click)="toggleStep(step)" [class.done]="step.done">
-        <span class="box">{{ step.done ? '✓' : '' }}</span>
-        {{ step.slot_id }}
-      </li>
+    @if (amSteps().length > 0) {
+      <div class="time-block am-block">
+        <h2 class="section-title">
+          <lucide-icon [img]="SunIcon" [size]="16" /> Matí
+        </h2>
+        <ul class="step-list">
+          @for (step of amSteps(); track step.id) {
+            <li class="step" [class.done]="step.done" (click)="toggleStep(step)">
+              <span class="checkbox">
+                @if (step.done) { <lucide-icon [img]="CheckIcon" [size]="13" /> }
+              </span>
+              <span class="step-label">{{ step.slot_id }}</span>
+            </li>
+          }
+        </ul>
+      </div>
     }
-  </ul>
+
+    @if (pmSteps().length > 0) {
+      <div class="time-block pm-block">
+        <h2 class="section-title">
+          <lucide-icon [img]="MoonIcon" [size]="16" /> Nit
+        </h2>
+        <ul class="step-list">
+          @for (step of pmSteps(); track step.id) {
+            <li class="step" [class.done]="step.done" (click)="toggleStep(step)">
+              <span class="checkbox">
+                @if (step.done) { <lucide-icon [img]="CheckIcon" [size]="13" /> }
+              </span>
+              <span class="step-label">{{ step.slot_id }}</span>
+            </li>
+          }
+        </ul>
+      </div>
+    }
+  </div>
 }
