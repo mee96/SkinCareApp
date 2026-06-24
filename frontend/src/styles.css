@@ -1,0 +1,52 @@
+:root {
+  /* ---- Paleta crua (kawaii maduixa) ---- */
+  --pink-50:  #fff3f6;
+  --pink-100: #ffe1ea;
+  --pink-200: #ffd9e4;
+  --pink-300: #ffc6d9;
+  --pink-400: #ff8fb1;
+  --pink-500: #ff6f9c;
+  --cream:    #fffaf3;
+
+  --ink-900: #73505d;
+  --ink-500: #ab8794;
+
+  /* tipus de nit */
+  --retinal: #d7d0f5;
+  --contorn: #c4ead6;
+  --hidrata: #ffe0bd;
+  --pegats:  #ffc9dd;
+
+  /* estats */
+  --success: #62b98a;
+  --warning: #e8a44b;
+  --danger:  #d98ca6;
+
+  /* ---- Rols semàntics (MODE CLAR) ---- */
+  --bg:            var(--pink-50);
+  --surface:       var(--cream);
+  --border:        var(--pink-200);
+  --primary:       var(--pink-400);
+  --text:          var(--ink-900);
+  --text-soft:     var(--ink-500);
+}
+
+/* ---- Rols semàntics (MODE FOSC) ---- */
+:root[data-theme='dark'] {
+  --bg:        #2a2228;
+  --surface:   #362c33;
+  --border:    #4a3a43;
+  --primary:   #ff8fb1;
+  --text:      #f3e3e9;
+  --text-soft: #c4a3b0;
+  /* la paleta crua i els tipus de nit es queden igual */
+}
+
+/* base */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}

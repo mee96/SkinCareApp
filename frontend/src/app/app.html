@@ -1,0 +1,17 @@
+<header class="topbar">
+  <button (click)="toggleTheme()">
+    <lucide-icon [img]="isDark() ? SunIcon : MoonIcon" />
+  </button>
+</header>
+
+<main class="content">
+  <router-outlet />
+</main>
+
+<nav class="tabbar">
+  <a routerLink="/avui" routerLinkActive="on">Avui</a>
+  <a routerLink="/calendari" routerLinkActive="on">Mes</a>
+  <a routerLink="/stock" routerLinkActive="on">Stock</a>
+  <a routerLink="/perfil" routerLinkActive="on">Perfil</a>
+  <a routerLink="/aprendre" routerLinkActive="on">Aprendre</a>
+</nav>

@@ -1,0 +1,17 @@
+<h1>El meu inventari</h1>
+
+@if (loading()) {
+  <p>Carregant...</p>
+} @else {
+  <ul>
+    @for (product of products(); track product.id) {
+      <li>
+        <strong>{{ product.name }}</strong>
+        @if (product.brand) { <span> — {{ product.brand }}</span> }
+        <em> ({{ product.slot_id }})</em>
+      </li>
+    } @empty {
+      <li>Encara no tens productes.</li>
+    }
+  </ul>
+}
