@@ -10,6 +10,7 @@ class Settings(BaseSettings):
     DB_USER: str
     DB_PASSWORD: str
     DB_SSL_CA: str = "ca.pem"
+    DB_SSL_CA_CONTENT: str | None = None
 
 
 settings = Settings()
