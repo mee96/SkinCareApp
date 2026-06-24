@@ -1,28 +1,12 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { LucideAngularModule, Sun, Moon, User } from 'lucide-angular';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, LucideAngularModule],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
-export class App {
-  readonly isDark = signal(false);
-  readonly iconSize = 18;
-
-  readonly SunIcon = Sun;
-  readonly MoonIcon = Moon;
-  readonly UserIcon = User;
-
-  toggleTheme(): void {
-    this.isDark.update((v) => !v);
-    document.documentElement.setAttribute(
-      'data-theme',
-      this.isDark() ? 'dark' : 'light'
-    );
-  }
-}
+export class App {}

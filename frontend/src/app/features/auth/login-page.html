@@ -1,0 +1,39 @@
+<div class="auth-card">
+  <h1>Inicia sessió</h1>
+
+  @if (error()) {
+    <p class="error-msg">{{ error() }}</p>
+  }
+
+  <form (ngSubmit)="loginWithEmail()">
+    <input
+      type="email"
+      placeholder="Correu electrònic"
+      [ngModel]="email()"
+      (ngModelChange)="email.set($event)"
+      name="email"
+      required
+    />
+    <input
+      type="password"
+      placeholder="Contrasenya"
+      [ngModel]="password()"
+      (ngModelChange)="password.set($event)"
+      name="password"
+      required
+    />
+    <button type="submit" [disabled]="loading()">
+      {{ loading() ? 'Entrant...' : 'Entra' }}
+    </button>
+  </form>
+
+  <div class="divider">o</div>
+
+  <button class="google-btn" (click)="loginWithGoogle()" [disabled]="loading()">
+    Continua amb Google
+  </button>
+
+  <p class="switch-link">
+    No tens compte? <a routerLink="/registre">Registra't</a>
+  </p>
+</div>
