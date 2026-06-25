@@ -6,6 +6,15 @@
   }
 
   <form (ngSubmit)="registerWithEmail()">
+
+    <input
+  type="text"
+  placeholder="Com et dius?"
+  [ngModel]="displayName()"
+  (ngModelChange)="displayName.set($event)"
+  name="displayName"
+  required
+/>
     <input
       type="email"
       placeholder="Correu electrònic"

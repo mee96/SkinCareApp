@@ -18,6 +18,9 @@ export class UserApi {
   updateSkinType(uid: string, skinType: SkinType): Observable<User> {
     return this.http.patch<User>(`${this.baseUrl}/${uid}`, { skin_type: skinType });
   }
+  updateDisplayName(uid: string, displayName: string): Observable<User> {
+  return this.http.patch<User>(`${this.baseUrl}/${uid}`, { display_name: displayName });
+}
   create(uid: string, email: string): Observable<User> {
   return this.http.post<User>(this.baseUrl, { firebase_uid: uid, email });
 }

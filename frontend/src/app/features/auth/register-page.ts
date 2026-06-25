@@ -42,6 +42,7 @@ export class RegisterPage {
   readonly skinTypeOptions = SKIN_TYPES;
   readonly concernOptions = CONCERN_TYPES;
 
+  readonly displayName = signal('');
   readonly email = signal('');
   readonly password = signal('');
   readonly skinType = signal<SkinType | null>(null);
@@ -50,7 +51,9 @@ export class RegisterPage {
   readonly error = signal<string | null>(null);
   readonly loading = signal(false);
 
-  readonly canSubmit = computed(() => this.skinType() !== null);
+  readonly canSubmit = computed(
+    () => this.displayName().trim().length > 0 && this.skinType() !== null
+  );
 
   selectSkinType(type: SkinType): void {
     this.skinType.set(type);
@@ -66,7 +69,7 @@ export class RegisterPage {
 
   async registerWithEmail(): Promise<void> {
     if (!this.canSubmit()) {
-      this.error.set('Tria el teu tipus de pell per continuar.');
+      this.error.set('Posa el teu nom i tria el tipus de pell per continuar.');
       return;
     }
     this.error.set(null);
@@ -84,7 +87,7 @@ export class RegisterPage {
 
   async registerWithGoogle(): Promise<void> {
     if (!this.canSubmit()) {
-      this.error.set('Tria el teu tipus de pell per continuar.');
+      this.error.set('Posa el teu nom i tria el tipus de pell per continuar.');
       return;
     }
     this.error.set(null);
@@ -114,7 +117,15 @@ export class RegisterPage {
       });
     });
 
-    // 2) desa el tipus de pell
+    // 2) desa el nom d'usuari
+    await new Promise<void>((resolve) => {
+      this.userApi.updateDisplayName(uid, this.displayName().trim()).subscribe({
+        next: () => resolve(),
+        error: () => resolve(),
+      });
+    });
+
+    // 3) desa el tipus de pell
     const type = this.skinType();
     if (type) {
       await new Promise<void>((resolve) => {
@@ -122,7 +133,7 @@ export class RegisterPage {
       });
     }
 
-    // 3) desa cada preocupació seleccionada
+    // 4) desa cada preocupació seleccionada
     const concerns = Array.from(this.selectedConcerns());
     for (const concernType of concerns) {
       await new Promise<void>((resolve) => {

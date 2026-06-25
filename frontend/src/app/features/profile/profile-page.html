@@ -1,6 +1,12 @@
 @if (loading()) {
   <p class="state-msg">Carregant el teu perfil...</p>
 } @else {
+  <div class="profile-card account-block">
+    <h1 class="greeting">Hola, {{ displayName() }} </h1>
+    <p class="account-email">{{ email() }}</p>
+    <button class="logout-btn" (click)="logout()">Tanca sessió</button>
+  </div>
+
   <div class="profile-card">
     <h2 class="section-title">Tipus de pell</h2>
     <div class="chip-row">

@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, signal, computed, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserApi } from '../../core/services/user';
 import { ConcernApi } from '../../core/services/concern';
 import { AuthStore } from '../../core/stores/auth-store';
@@ -34,10 +35,12 @@ export class ProfilePage implements OnInit {
   private userApi = inject(UserApi);
   private concernApi = inject(ConcernApi);
   private authStore = inject(AuthStore);
+  private router = inject(Router);
 
   readonly loading = signal(true);
   readonly skinType = signal<SkinType | null>(null);
   readonly concerns = signal<Concern[]>([]);
+  readonly displayName = signal<string | null>(null);
 
   readonly skinTypeOptions = SKIN_TYPES;
   readonly concernOptions = CONCERN_TYPES;
@@ -45,6 +48,8 @@ export class ProfilePage implements OnInit {
   readonly activeConcernTypes = computed(
     () => new Set(this.concerns().map((c) => c.concern_type))
   );
+
+  readonly email = computed(() => this.authStore.email());
 
   ngOnInit(): void {
     const uid = this.authStore.uid();
@@ -55,6 +60,7 @@ export class ProfilePage implements OnInit {
 
     this.userApi.getById(uid).subscribe({
       next: (user) => {
+        this.displayName.set(user.display_name);
         this.skinType.set(user.skin_type);
         this.concernApi.getByUser(uid).subscribe({
           next: (concerns) => {
@@ -71,7 +77,7 @@ export class ProfilePage implements OnInit {
     const uid = this.authStore.uid();
     if (!uid) return;
 
-    this.skinType.set(type); // actualització immediata a la UI
+    this.skinType.set(type);
     this.userApi.updateSkinType(uid, type).subscribe();
   }
 
@@ -91,5 +97,10 @@ export class ProfilePage implements OnInit {
         },
       });
     }
+  }
+
+  async logout(): Promise<void> {
+    await this.authStore.logout();
+    this.router.navigateByUrl('/login');
   }
 }
