@@ -1,33 +1,35 @@
 import { ChangeDetectionStrategy, Component, inject, signal, computed, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 import { UserApi } from '../../core/services/user';
 import { ConcernApi } from '../../core/services/concern';
 import { AuthStore } from '../../core/stores/auth-store';
 import { SkinType } from '../../core/models/user';
 import { Concern, ConcernType } from '../../core/models/concern';
 
-const SKIN_TYPES: { value: SkinType; label: string }[] = [
-  { value: 'mixta', label: 'Mixta' },
-  { value: 'grassa', label: 'Grassa' },
-  { value: 'seca', label: 'Seca' },
-  { value: 'normal', label: 'Normal' },
-  { value: 'sensible', label: 'Sensible' },
+const SKIN_TYPES: { value: SkinType }[] = [
+  { value: 'mixta' },
+  { value: 'grassa' },
+  { value: 'seca' },
+  { value: 'normal' },
+  { value: 'sensible' },
 ];
 
-const CONCERN_TYPES: { value: ConcernType; label: string; emoji: string }[] = [
-  { value: 'grans', label: 'Grans', emoji: '🔴' },
-  { value: 'rosacea', label: 'Rosàcia', emoji: '🌹' },
-  { value: 'arrugues', label: 'Arrugues', emoji: '〜' },
-  { value: 'iluminacio', label: 'Il·luminació', emoji: '✨' },
-  { value: 'taques', label: 'Taques', emoji: '🟤' },
-  { value: 'poros', label: 'Porus', emoji: '🔵' },
-  { value: 'deshidratacio', label: 'Deshidratació', emoji: '💧' },
+const CONCERN_TYPES: { value: ConcernType; emoji: string }[] = [
+  { value: 'grans', emoji: '🔴' },
+  { value: 'rosacea', emoji: '🌹' },
+  { value: 'arrugues', emoji: '〜' },
+  { value: 'iluminacio', emoji: '✨' },
+  { value: 'taques', emoji: '🟤' },
+  { value: 'poros', emoji: '🔵' },
+  { value: 'deshidratacio', emoji: '💧' },
 ];
 
 @Component({
   selector: 'app-profile-page',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [TranslatePipe],
   templateUrl: './profile-page.html',
   styleUrls: ['../../shared/ui/chips.css', './profile-page.css'],
 })

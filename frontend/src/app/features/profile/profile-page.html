@@ -1,14 +1,14 @@
 @if (loading()) {
-  <p class="state-msg">Carregant el teu perfil...</p>
+  <p class="state-msg">{{ 'profile.loading' | translate }}</p>
 } @else {
   <div class="profile-card account-block">
-    <h1 class="greeting">Hola, {{ displayName() }} </h1>
+    <h1 class="greeting">{{ 'profile.greeting' | translate }}, {{ displayName() }} 👋</h1>
     <p class="account-email">{{ email() }}</p>
-    <button class="logout-btn" (click)="logout()">Tanca sessió</button>
+    <button class="logout-btn" (click)="logout()">{{ 'profile.logout' | translate }}</button>
   </div>
 
   <div class="profile-card">
-    <h2 class="section-title">Tipus de pell</h2>
+    <h2 class="section-title">{{ 'profile.skinTypeTitle' | translate }}</h2>
     <div class="chip-row">
       @for (opt of skinTypeOptions; track opt.value) {
         <button
@@ -16,12 +16,12 @@
           [class.active]="skinType() === opt.value"
           (click)="selectSkinType(opt.value)"
         >
-          {{ opt.label }}
+          {{ 'profile.skinTypes.' + opt.value | translate }}
         </button>
       }
     </div>
 
-    <h2 class="section-title">Què et preocupa?</h2>
+    <h2 class="section-title">{{ 'profile.concernsTitle' | translate }}</h2>
     <div class="chip-row">
       @for (opt of concernOptions; track opt.value) {
         <button
@@ -29,7 +29,7 @@
           [class.active]="activeConcernTypes().has(opt.value)"
           (click)="toggleConcern(opt.value)"
         >
-          {{ opt.emoji }} {{ opt.label }}
+          {{ opt.emoji }} {{ 'profile.concerns.' + opt.value | translate }}
         </button>
       }
     </div>

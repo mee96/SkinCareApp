@@ -51,5 +51,85 @@
         "warning": "Si usas retinoides (retinal, retinol), la fotosensibilidad aumenta. El SPF deja de ser opcional."
       }
     }
+  },
+  "today": {
+    "loading": "Cargando tu rutina de hoy...",
+    "noRoutine": "Todavía no tienes ninguna rutina asignada para hoy.",
+    "steps": "pasos",
+    "complete": "¡completo!",
+    "morning": "Mañana",
+    "night": "Noche",
+    "types": {
+      "R": "Retinal",
+      "C": "Contorno",
+      "H": "Hidratación",
+      "P": "Parches"
+    },
+    "slots": {
+      "oil-cleanser": "Limpiador de aceite",
+      "water-cleanser": "Limpiador acuoso",
+      "toner": "Tónico",
+      "essence": "Esencia",
+      "treatment-serum": "Sérum tratamiento",
+      "retinoid": "Retinoide",
+      "eye": "Contorno de ojos",
+      "moisturizer": "Hidratante",
+      "exfoliant": "Exfoliante",
+      "spf": "Protección solar"
+    }
+  },
+  "nav": {
+    "today": "Hoy",
+    "calendar": "Mes",
+    "stock": "Stock",
+    "learn": "Aprender"
+  },
+  "profile": {
+    "loading": "Cargando tu perfil...",
+    "greeting": "Hola",
+    "logout": "Cerrar sesión",
+    "skinTypeTitle": "Tipo de piel",
+    "concernsTitle": "¿Qué te preocupa?",
+    "skinTypes": {
+      "mixta": "Mixta",
+      "grassa": "Grasa",
+      "seca": "Seca",
+      "normal": "Normal",
+      "sensible": "Sensible"
+    },
+    "concerns": {
+      "grans": "Granos",
+      "rosacea": "Rosácea",
+      "arrugues": "Arrugas",
+      "iluminacio": "Luminosidad",
+      "taques": "Manchas",
+      "poros": "Poros",
+      "deshidratacio": "Deshidratación"
+    }
+  },
+  "auth": {
+    "loginTitle": "Inicia sesión",
+    "registerTitle": "Crea tu cuenta",
+    "emailPlaceholder": "Correo electrónico",
+    "passwordPlaceholder": "Contraseña",
+    "passwordHintPlaceholder": "Contraseña (mín. 6 caracteres)",
+    "namePlaceholder": "¿Cómo te llamas?",
+    "or": "o",
+    "continueWithGoogle": "Continúa con Google",
+    "noAccount": "¿No tienes cuenta?",
+    "haveAccount": "¿Ya tienes cuenta?",
+    "signIn": "Inicia sesión",
+    "submitLogin": "Entra",
+    "signUp": "Regístrate",
+    "loggingIn": "Entrando...",
+    "creatingAccount": "Creando cuenta...",
+    "optional": "(opcional)",
+    "errors": {
+      "loginFailed": "Email o contraseña incorrectos.",
+      "googleLoginFailed": "No se ha podido iniciar sesión con Google.",
+      "registerFailed": "No se ha podido completar el registro.",
+      "googleRegisterFailed": "No se ha podido completar el registro con Google.",
+      "missingFields": "Indica tu nombre y elige un tipo de piel para continuar."
+    }
   }
 }

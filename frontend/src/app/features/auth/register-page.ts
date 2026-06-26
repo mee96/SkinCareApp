@@ -1,35 +1,36 @@
 import { ChangeDetectionStrategy, Component, inject, signal, computed } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { TranslatePipe } from '@ngx-translate/core';
 import { AuthStore } from '../../core/stores/auth-store';
 import { UserApi } from '../../core/services/user';
 import { ConcernApi } from '../../core/services/concern';
 import { SkinType } from '../../core/models/user';
 import { ConcernType } from '../../core/models/concern';
 
-const SKIN_TYPES: { value: SkinType; label: string }[] = [
-  { value: 'mixta', label: 'Mixta' },
-  { value: 'grassa', label: 'Grassa' },
-  { value: 'seca', label: 'Seca' },
-  { value: 'normal', label: 'Normal' },
-  { value: 'sensible', label: 'Sensible' },
+const SKIN_TYPES: { value: SkinType }[] = [
+  { value: 'mixta' },
+  { value: 'grassa' },
+  { value: 'seca' },
+  { value: 'normal' },
+  { value: 'sensible' },
 ];
 
-const CONCERN_TYPES: { value: ConcernType; label: string; emoji: string }[] = [
-  { value: 'grans', label: 'Grans', emoji: '🔴' },
-  { value: 'rosacea', label: 'Rosàcia', emoji: '🌹' },
-  { value: 'arrugues', label: 'Arrugues', emoji: '〜' },
-  { value: 'iluminacio', label: 'Il·luminació', emoji: '✨' },
-  { value: 'taques', label: 'Taques', emoji: '🟤' },
-  { value: 'poros', label: 'Porus', emoji: '🔵' },
-  { value: 'deshidratacio', label: 'Deshidratació', emoji: '💧' },
+const CONCERN_TYPES: { value: ConcernType; emoji: string }[] = [
+  { value: 'grans', emoji: '🔴' },
+  { value: 'rosacea', emoji: '🌹' },
+  { value: 'arrugues', emoji: '〜' },
+  { value: 'iluminacio', emoji: '✨' },
+  { value: 'taques', emoji: '🟤' },
+  { value: 'poros', emoji: '🔵' },
+  { value: 'deshidratacio', emoji: '💧' },
 ];
 
 @Component({
   selector: 'app-register-page',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FormsModule, RouterLink],
+  imports: [FormsModule, RouterLink, TranslatePipe],
   templateUrl: './register-page.html',
   styleUrls: ['../../shared/ui/auth-card.css', '../../shared/ui/chips.css', './register-page.css'],
 })
@@ -69,7 +70,7 @@ export class RegisterPage {
 
   async registerWithEmail(): Promise<void> {
     if (!this.canSubmit()) {
-      this.error.set('Posa el teu nom i tria el tipus de pell per continuar.');
+      this.error.set('auth.errors.missingFields');
       return;
     }
     this.error.set(null);
@@ -79,7 +80,7 @@ export class RegisterPage {
       await this.completeOnboarding(firebaseUser.uid, firebaseUser.email ?? this.email());
       this.router.navigateByUrl('/avui');
     } catch {
-      this.error.set('No s\'ha pogut completar el registre.');
+      this.error.set('auth.errors.registerFailed');
     } finally {
       this.loading.set(false);
     }
@@ -87,7 +88,7 @@ export class RegisterPage {
 
   async registerWithGoogle(): Promise<void> {
     if (!this.canSubmit()) {
-      this.error.set('Posa el teu nom i tria el tipus de pell per continuar.');
+      this.error.set('auth.errors.missingFields');
       return;
     }
     this.error.set(null);
@@ -97,7 +98,7 @@ export class RegisterPage {
       await this.completeOnboarding(firebaseUser.uid, firebaseUser.email ?? '');
       this.router.navigateByUrl('/avui');
     } catch {
-      this.error.set('No s\'ha pogut completar el registre amb Google.');
+      this.error.set('auth.errors.googleRegisterFailed');
     } finally {
       this.loading.set(false);
     }

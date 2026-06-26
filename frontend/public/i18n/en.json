@@ -51,5 +51,85 @@
         "warning": "If you use retinoids (retinal, retinol), photosensitivity increases. SPF stops being optional."
       }
     }
+  },
+  "today": {
+    "loading": "Loading your routine for today...",
+    "noRoutine": "You don't have a routine assigned for today yet.",
+    "steps": "steps",
+    "complete": "complete!",
+    "morning": "Morning",
+    "night": "Night",
+    "types": {
+      "R": "Retinal",
+      "C": "Eye contour",
+      "H": "Hydration",
+      "P": "Patches"
+    },
+    "slots": {
+      "oil-cleanser": "Oil cleanser",
+      "water-cleanser": "Water cleanser",
+      "toner": "Toner",
+      "essence": "Essence",
+      "treatment-serum": "Treatment serum",
+      "retinoid": "Retinoid",
+      "eye": "Eye cream",
+      "moisturizer": "Moisturizer",
+      "exfoliant": "Exfoliant",
+      "spf": "Sunscreen"
+    }
+  },
+  "nav": {
+    "today": "Today",
+    "calendar": "Month",
+    "stock": "Stock",
+    "learn": "Learn"
+  },
+  "profile": {
+    "loading": "Loading your profile...",
+    "greeting": "Hi",
+    "logout": "Log out",
+    "skinTypeTitle": "Skin type",
+    "concernsTitle": "What concerns you?",
+    "skinTypes": {
+      "mixta": "Combination",
+      "grassa": "Oily",
+      "seca": "Dry",
+      "normal": "Normal",
+      "sensible": "Sensitive"
+    },
+    "concerns": {
+      "grans": "Breakouts",
+      "rosacea": "Rosacea",
+      "arrugues": "Wrinkles",
+      "iluminacio": "Brightening",
+      "taques": "Dark spots",
+      "poros": "Pores",
+      "deshidratacio": "Dehydration"
+    }
+  },
+  "auth": {
+    "loginTitle": "Sign in",
+    "registerTitle": "Create your account",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Password",
+    "passwordHintPlaceholder": "Password (min. 6 characters)",
+    "namePlaceholder": "What's your name?",
+    "or": "or",
+    "continueWithGoogle": "Continue with Google",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?",
+    "signIn": "Sign in",
+    "submitLogin": "Log in",
+    "signUp": "Sign up",
+    "loggingIn": "Signing in...",
+    "creatingAccount": "Creating account...",
+    "optional": "(optional)",
+    "errors": {
+      "loginFailed": "Incorrect email or password.",
+      "googleLoginFailed": "Couldn't sign in with Google.",
+      "registerFailed": "Couldn't complete registration.",
+      "googleRegisterFailed": "Couldn't complete registration with Google.",
+      "missingFields": "Enter your name and choose a skin type to continue."
+    }
   }
 }

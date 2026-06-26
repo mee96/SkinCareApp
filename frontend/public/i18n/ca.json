@@ -4,17 +4,17 @@
     "back": "Tornar",
     "articles": {
       "skinType": {
-  "title": "Com saber el teu tipus de pell",
-  "summary": "Mixta, grassa, seca, normal o sensible — descobreix la teva.",
-  "intro": "Renta la cara amb un netejador suau i espera 30 minuts sense aplicar res més.",
-  "groups": [
-    { "label": "Pell grassa", "value": "brilla per tota la cara, sobretot a la zona T (front, nas, mentó)." },
-    { "label": "Pell seca", "value": "es nota tibant, pot tenir descamació visible." },
-    { "label": "Pell mixta", "value": "brilla a la zona T però les galtes es mantenen normals o seques." },
-    { "label": "Pell normal", "value": "equilibrada, sense brillantor excessiva ni tibantor." },
-    { "label": "Pell sensible", "value": "es pot envermellir, picar o reaccionar fàcilment a productes nous." }
-  ]
-},
+        "title": "Com saber el teu tipus de pell",
+        "summary": "Mixta, grassa, seca, normal o sensible — descobreix la teva.",
+        "intro": "Renta la cara amb un netejador suau i espera 30 minuts sense aplicar res més.",
+        "groups": [
+          { "label": "Pell grassa", "value": "brilla per tota la cara, sobretot a la zona T (front, nas, mentó)." },
+          { "label": "Pell seca", "value": "es nota tibant, pot tenir descamació visible." },
+          { "label": "Pell mixta", "value": "brilla a la zona T però les galtes es mantenen normals o seques." },
+          { "label": "Pell normal", "value": "equilibrada, sense brillantor excessiva ni tibantor." },
+          { "label": "Pell sensible", "value": "es pot envermellir, picar o reaccionar fàcilment a productes nous." }
+        ]
+      },
       "routineSteps": {
         "title": "Els passos de la rutina coreana",
         "summary": "L'ordre correcte: de més lleuger a més dens.",
@@ -28,18 +28,18 @@
         ]
       },
       "ingredientsByConcern": {
-  "title": "Quins ingredients per cada preocupació",
-  "summary": "Niacinamida, retinal, vitamina C... què serveix per a què.",
-  "groups": [
-    { "label": "Grans / acne", "value": "Niacinamida, BHA (àcid salicílic), àcid azelaic. Evita olis comedogènics." },
-    { "label": "Rosàcia", "value": "Niacinamida, centella asiàtica, àcid azelaic. Vigila amb retinoides forts i exfoliants agressius." },
-    { "label": "Arrugues", "value": "Retinal/retinol, pèptids, vitamina C." },
-    { "label": "Il·luminació", "value": "Vitamina C, niacinamida, àcid tranexàmic." },
-    { "label": "Taques fosques", "value": "Vitamina C, àcid azelaic, i sobretot SPF constant." },
-    { "label": "Porus", "value": "BHA, niacinamida." },
-    { "label": "Deshidratació", "value": "Àcid hialurònic, glicerina, ceramides." }
-  ]
-},
+        "title": "Quins ingredients per cada preocupació",
+        "summary": "Niacinamida, retinal, vitamina C... què serveix per a què.",
+        "groups": [
+          { "label": "Grans / acne", "value": "Niacinamida, BHA (àcid salicílic), àcid azelaic. Evita olis comedogènics." },
+          { "label": "Rosàcia", "value": "Niacinamida, centella asiàtica, àcid azelaic. Vigila amb retinoides forts i exfoliants agressius." },
+          { "label": "Arrugues", "value": "Retinal/retinol, pèptids, vitamina C." },
+          { "label": "Il·luminació", "value": "Vitamina C, niacinamida, àcid tranexàmic." },
+          { "label": "Taques fosques", "value": "Vitamina C, àcid azelaic, i sobretot SPF constant." },
+          { "label": "Porus", "value": "BHA, niacinamida." },
+          { "label": "Deshidratació", "value": "Àcid hialurònic, glicerina, ceramides." }
+        ]
+      },
       "spfImportance": {
         "title": "La importància de la crema solar",
         "summary": "El pas que no et pots saltar mai, sigui hivern o estiu.",
@@ -51,5 +51,85 @@
         "warning": "Si fas servir retinoides (retinal, retinol), la fotosensibilitat augmenta. L'SPF deixa de ser opcional."
       }
     }
+  },
+  "today": {
+    "loading": "Carregant la teva rutina d'avui...",
+    "noRoutine": "Encara no tens cap rutina assignada per avui.",
+    "steps": "passos",
+    "complete": "complet!",
+    "morning": "Matí",
+    "night": "Nit",
+    "types": {
+      "R": "Retinal",
+      "C": "Contorn",
+      "H": "Hidratació",
+      "P": "Pegats"
+    },
+    "slots": {
+      "oil-cleanser": "Netejador d'oli",
+      "water-cleanser": "Netejador aquós",
+      "toner": "Tònic",
+      "essence": "Essència",
+      "treatment-serum": "Sèrum tractament",
+      "retinoid": "Retinoide",
+      "eye": "Contorn d'ulls",
+      "moisturizer": "Hidratant",
+      "exfoliant": "Exfoliant",
+      "spf": "Protecció solar"
+    }
+  },
+  "nav": {
+    "today": "Avui",
+    "calendar": "Mes",
+    "stock": "Stock",
+    "learn": "Aprendre"
+  },
+  "profile": {
+  "loading": "Carregant el teu perfil...",
+  "greeting": "Hola",
+  "logout": "Tanca sessió",
+  "skinTypeTitle": "Tipus de pell",
+  "concernsTitle": "Què et preocupa?",
+  "skinTypes": {
+    "mixta": "Mixta",
+    "grassa": "Grassa",
+    "seca": "Seca",
+    "normal": "Normal",
+    "sensible": "Sensible"
+  },
+  "concerns": {
+    "grans": "Grans",
+    "rosacea": "Rosàcia",
+    "arrugues": "Arrugues",
+    "iluminacio": "Il·luminació",
+    "taques": "Taques",
+    "poros": "Porus",
+    "deshidratacio": "Deshidratació"
   }
+},
+"auth": {
+  "loginTitle": "Inicia sessió",
+  "registerTitle": "Crea el teu compte",
+  "emailPlaceholder": "Correu electrònic",
+  "passwordPlaceholder": "Contrasenya",
+  "passwordHintPlaceholder": "Contrasenya (mín. 6 caràcters)",
+  "namePlaceholder": "Com et dius?",
+  "or": "o",
+  "continueWithGoogle": "Continua amb Google",
+  "noAccount": "No tens compte?",
+  "haveAccount": "Ja tens compte?",
+  "signIn": "Inicia sessió",
+  "submitLogin": "Entra",
+  "signUp": "Registra't",
+  "loggingIn": "Entrant...",
+  "creatingAccount": "Creant compte...",
+  "optional": "(opcional)",
+  "errors": {
+    "loginFailed": "Email o contrasenya incorrectes.",
+    "googleLoginFailed": "No s'ha pogut iniciar sessió amb Google.",
+    "registerFailed": "No s'ha pogut completar el registre.",
+    "googleRegisterFailed": "No s'ha pogut completar el registre amb Google.",
+    "missingFields": "Posa el teu nom i tria el tipus de pell per continuar."
+  }
+}
 }

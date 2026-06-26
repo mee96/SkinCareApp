@@ -1,13 +1,13 @@
 @if (loading()) {
-  <p class="state-msg">Carregant la teva rutina d'avui...</p>
+  <p class="state-msg">{{ 'today.loading' | translate }}</p>
 } @else if (!routineType()) {
-  <p class="state-msg">Encara no tens cap rutina assignada per avui.</p>
+  <p class="state-msg">{{ 'today.noRoutine' | translate }}</p>
 } @else {
   <div class="today-card">
     <div class="card-head">
   <span class="day-label">{{ formattedDate() }}</span>
   <span class="type-pill" [class]="'type-' + routineType()">
-    {{ typeLabel() }}
+    {{ typeEmoji() }} {{ typeLabel() | translate }}
   </span>
 </div>
 
@@ -15,16 +15,16 @@
       <div class="progress-fill" [style.width.%]="progressPct()"></div>
     </div>
     <p class="progress-text">
-      {{ progress().done }}/{{ progress().total }} passos
+      {{ progress().done }}/{{ progress().total }} {{ 'today.steps' | translate }}
       @if (progress().done === progress().total && progress().total > 0) {
-        <span class="complete-badge">⭐ complet!</span>
+        <span class="complete-badge">⭐ {{ 'today.complete' | translate }}</span>
       }
     </p>
 
     @if (amSteps().length > 0) {
       <div class="time-block am-block">
         <h2 class="section-title">
-          <lucide-icon [img]="SunIcon" [size]="16" /> Matí
+          <lucide-icon [img]="SunIcon" [size]="16" /> {{ 'today.morning' | translate }}
         </h2>
         <ul class="step-list">
           @for (step of amSteps(); track step.id) {
@@ -32,7 +32,7 @@
               <span class="checkbox">
                 @if (step.done) { <lucide-icon [img]="CheckIcon" [size]="13" /> }
               </span>
-              <span class="step-label">{{ step.slot_id }}</span>
+              <span class="step-label">{{ 'today.slots.' + step.slot_id | translate }}</span>
             </li>
           }
         </ul>
@@ -42,7 +42,7 @@
     @if (pmSteps().length > 0) {
       <div class="time-block pm-block">
         <h2 class="section-title">
-          <lucide-icon [img]="MoonIcon" [size]="16" /> Nit
+          <lucide-icon [img]="MoonIcon" [size]="16" /> {{ 'today.night' | translate }}
         </h2>
         <ul class="step-list">
           @for (step of pmSteps(); track step.id) {
@@ -50,7 +50,7 @@
               <span class="checkbox">
                 @if (step.done) { <lucide-icon [img]="CheckIcon" [size]="13" /> }
               </span>
-              <span class="step-label">{{ step.slot_id }}</span>
+              <span class="step-label">{{ 'today.slots.' + step.slot_id | translate }}</span>
             </li>
           }
         </ul>

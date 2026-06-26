@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, signal, computed, OnInit } from '@angular/core';
 import { LucideAngularModule, Sun, Moon, Check } from 'lucide-angular';
+import { TranslatePipe } from '@ngx-translate/core';
 import { Schedule } from '../../core/services/schedule';
 import { StepDefApi } from '../../core/services/step-def';
 import { StepLogApi } from '../../core/services/step-log';
@@ -10,18 +11,18 @@ interface StepView extends StepDef {
   done: boolean;
 }
 
-const TYPE_LABELS: Record<string, string> = {
-  R: '💧 Retinal',
-  C: '👁️ Contorn',
-  H: '🌸 Hidratació',
-  P: '🧖 Pegats',
+const TYPE_EMOJIS: Record<string, string> = {
+  R: '💧',
+  C: '👁️',
+  H: '🌸',
+  P: '🧖',
 };
 
 @Component({
   selector: 'app-today-page',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [LucideAngularModule],
+  imports: [LucideAngularModule, TranslatePipe],
   templateUrl: './today-page.html',
   styleUrl: './today-page.css',
 })
@@ -40,7 +41,8 @@ export class TodayPage implements OnInit {
   readonly routineType = signal<string | null>(null);
   readonly steps = signal<StepView[]>([]);
 
-  readonly typeLabel = computed(() => TYPE_LABELS[this.routineType() ?? ''] ?? '');
+  readonly typeLabel = computed(() => 'today.types.' + (this.routineType() ?? ''));
+  readonly typeEmoji = computed(() => TYPE_EMOJIS[this.routineType() ?? ''] ?? '');
   readonly amSteps = computed(() => this.steps().filter((s) => s.moment === 'am'));
   readonly pmSteps = computed(() => this.steps().filter((s) => s.moment === 'pm'));
   readonly progress = computed(() => {

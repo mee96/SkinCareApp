@@ -1,14 +1,14 @@
 <div class="auth-card">
-  <h1>Inicia sessió</h1>
+  <h1>{{ 'auth.loginTitle' | translate }}</h1>
 
   @if (error()) {
-    <p class="error-msg">{{ error() }}</p>
+    <p class="error-msg">{{ error() | translate }}</p>
   }
 
   <form (ngSubmit)="loginWithEmail()">
     <input
       type="email"
-      placeholder="Correu electrònic"
+      placeholder="{{ 'auth.emailPlaceholder' | translate }}"
       [ngModel]="email()"
       (ngModelChange)="email.set($event)"
       name="email"
@@ -16,24 +16,24 @@
     />
     <input
       type="password"
-      placeholder="Contrasenya"
+      placeholder="{{ 'auth.passwordPlaceholder' | translate }}"
       [ngModel]="password()"
       (ngModelChange)="password.set($event)"
       name="password"
       required
     />
     <button type="submit" [disabled]="loading()">
-      {{ loading() ? 'Entrant...' : 'Entra' }}
+      {{ (loading() ? 'auth.loggingIn' : 'auth.submitLogin') | translate }}
     </button>
   </form>
 
-  <div class="divider">o</div>
+  <div class="divider">{{ 'auth.or' | translate }}</div>
 
   <button class="google-btn" (click)="loginWithGoogle()" [disabled]="loading()">
-    Continua amb Google
+    {{ 'auth.continueWithGoogle' | translate }}
   </button>
 
   <p class="switch-link">
-    No tens compte? <a routerLink="/registre">Registra't</a>
+    {{ 'auth.noAccount' | translate }} <a routerLink="/registre">{{ 'auth.signUp' | translate }}</a>
   </p>
 </div>

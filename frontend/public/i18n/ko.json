@@ -51,5 +51,85 @@
         "warning": "레티노이드(레티날, 레티놀)를 사용하면 광과민성이 높아집니다. SPF는 더 이상 선택이 아닙니다."
       }
     }
+  },
+  "today": {
+    "loading": "오늘의 루틴을 불러오는 중...",
+    "noRoutine": "아직 오늘에 배정된 루틴이 없습니다.",
+    "steps": "단계",
+    "complete": "완료!",
+    "morning": "아침",
+    "night": "밤",
+    "types": {
+      "R": "레티날",
+      "C": "아이크림",
+      "H": "수분",
+      "P": "패치"
+    },
+    "slots": {
+      "oil-cleanser": "오일 클렌저",
+      "water-cleanser": "수성 클렌저",
+      "toner": "토너",
+      "essence": "에센스",
+      "treatment-serum": "트리트먼트 세럼",
+      "retinoid": "레티노이드",
+      "eye": "아이크림",
+      "moisturizer": "수분크림",
+      "exfoliant": "각질제거제",
+      "spf": "자외선 차단제"
+    }
+  },
+  "nav": {
+    "today": "오늘",
+    "calendar": "달",
+    "stock": "재고",
+    "learn": "배우기"
+  },
+  "profile": {
+    "loading": "프로필을 불러오는 중...",
+    "greeting": "안녕",
+    "logout": "로그아웃",
+    "skinTypeTitle": "피부 타입",
+    "concernsTitle": "어떤 고민이 있나요?",
+    "skinTypes": {
+      "mixta": "복합성",
+      "grassa": "지성",
+      "seca": "건성",
+      "normal": "보통",
+      "sensible": "민감성"
+    },
+    "concerns": {
+      "grans": "여드름",
+      "rosacea": "로사시아",
+      "arrugues": "주름",
+      "iluminacio": "광채",
+      "taques": "다크스팟",
+      "poros": "모공",
+      "deshidratacio": "수분 부족"
+    }
+  },
+  "auth": {
+    "loginTitle": "로그인",
+    "registerTitle": "계정 만들기",
+    "emailPlaceholder": "이메일",
+    "passwordPlaceholder": "비밀번호",
+    "passwordHintPlaceholder": "비밀번호 (최소 6자)",
+    "namePlaceholder": "이름이 무엇인가요?",
+    "or": "또는",
+    "continueWithGoogle": "Google로 계속하기",
+    "noAccount": "계정이 없으신가요?",
+    "haveAccount": "이미 계정이 있으신가요?",
+    "signIn": "로그인",
+    "submitLogin": "로그인",
+    "signUp": "가입하기",
+    "loggingIn": "로그인 중...",
+    "creatingAccount": "계정 만드는 중...",
+    "optional": "(선택)",
+    "errors": {
+      "loginFailed": "이메일 또는 비밀번호가 올바르지 않습니다.",
+      "googleLoginFailed": "Google로 로그인할 수 없습니다.",
+      "registerFailed": "가입을 완료할 수 없습니다.",
+      "googleRegisterFailed": "Google로 가입을 완료할 수 없습니다.",
+      "missingFields": "계속하려면 이름을 입력하고 피부 타입을 선택하세요."
+    }
   }
 }

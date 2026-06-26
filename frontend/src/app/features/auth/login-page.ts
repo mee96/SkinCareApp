@@ -1,13 +1,14 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { TranslatePipe } from '@ngx-translate/core';
 import { AuthStore } from '../../core/stores/auth-store';
 
 @Component({
   selector: 'app-login-page',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FormsModule, RouterLink],
+  imports: [FormsModule, RouterLink, TranslatePipe],
   templateUrl: './login-page.html',
   styleUrls: ['../../shared/ui/auth-card.css', './login-page.css'],
 })
@@ -27,7 +28,7 @@ export class LoginPage {
       await this.authStore.loginWithEmail(this.email(), this.password());
       this.router.navigateByUrl('/avui');
     } catch (e) {
-      this.error.set('Email o contrasenya incorrectes.');
+      this.error.set('auth.errors.loginFailed');
     } finally {
       this.loading.set(false);
     }
@@ -40,7 +41,7 @@ export class LoginPage {
       await this.authStore.loginWithGoogle();
       this.router.navigateByUrl('/avui');
     } catch (e) {
-      this.error.set('No s\'ha pogut iniciar sessió amb Google.');
+      this.error.set('auth.errors.googleLoginFailed');
     } finally {
       this.loading.set(false);
     }
