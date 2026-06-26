@@ -1,0 +1,20 @@
+
+<div class="lang-switcher">
+  <button class="icon-btn" (click)="toggleOpen()">
+    {{ current().toUpperCase() }}
+  </button>
+
+  @if (open()) {
+    <div class="lang-menu">
+      @for (opt of options; track opt.code) {
+        <button
+          class="lang-opt"
+          [class.active]="current() === opt.code"
+          (click)="select(opt.code)"
+        >
+          {{ opt.label }}
+        </button>
+      }
+    </div>
+  }
+</div>

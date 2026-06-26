@@ -1,0 +1,29 @@
+@if (selected()) {
+  <div class="article-view">
+    <button class="back-btn" (click)="closeArticle()">
+      <lucide-icon [img]="ChevronLeftIcon" [size]="iconSize" /> {{ 'learn.back' | translate }}
+    </button>
+    <h1>
+      <lucide-icon [img]="selected()!.icon" [size]="22" />
+      {{ 'learn.articles.' + selected()!.key + '.title' | translate }}
+    </h1>
+    @for (i of paragraphIndexes(selected()!); track i) {
+      <p>{{ 'learn.articles.' + selected()!.key + '.content.' + i | translate }}</p>
+    }
+  </div>
+} @else {
+  <h1 class="page-title">{{ 'learn.title' | translate }}</h1>
+  <div class="article-list">
+    @for (article of articles; track article.id) {
+      <button class="article-card" (click)="open(article)">
+        <span class="card-icon">
+          <lucide-icon [img]="article.icon" [size]="22" />
+        </span>
+        <div class="card-text">
+          <h2>{{ 'learn.articles.' + article.key + '.title' | translate }}</h2>
+          <p>{{ 'learn.articles.' + article.key + '.summary' | translate }}</p>
+        </div>
+      </button>
+    }
+  </div>
+}

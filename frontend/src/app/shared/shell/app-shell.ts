@@ -1,14 +1,15 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { LucideAngularModule, Sun, Moon, User } from 'lucide-angular';
+import { LanguageSwitcher } from '../ui/language-switcher';
 
 @Component({
   selector: 'app-shell',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, LucideAngularModule],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, LucideAngularModule, LanguageSwitcher],
   templateUrl: './app-shell.html',
-  styleUrl: './app-shell.css',
+  styleUrls: ['../ui/icon-btn.css', './app-shell.css'],
 })
 export class AppShell {
   readonly isDark = signal(false);

@@ -16,7 +16,7 @@ export const routes: Routes = [
       { path: 'calendari', redirectTo: 'stock' },
       { path: 'stock', loadComponent: () => import('./features/stock/stock-page').then(m => m.StockPage) },
       { path: 'perfil', loadComponent: () => import('./features/profile/profile-page').then(m => m.ProfilePage) },
-      { path: 'aprendre', redirectTo: 'stock' },
+      { path: 'aprendre', loadComponent: () => import('./features/learn/learn-page').then(m => m.LearnPage) },
     ],
   },
 ];

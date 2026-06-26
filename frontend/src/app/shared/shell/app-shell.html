@@ -2,11 +2,14 @@
   <a routerLink="/perfil" class="icon-btn" routerLinkActive="active-link">
     <lucide-icon [img]="UserIcon" [size]="iconSize" />
   </a>
-  <button class="icon-btn" (click)="toggleTheme()">
-    <lucide-icon [img]="isDark() ? SunIcon : MoonIcon" [size]="iconSize" />
-  </button>
-</header>
 
+  <div class="topbar-right">
+    <app-language-switcher />
+    <button class="icon-btn" (click)="toggleTheme()">
+      <lucide-icon [img]="isDark() ? SunIcon : MoonIcon" [size]="iconSize" />
+    </button>
+  </div>
+</header>
 <main class="content">
   <router-outlet />
 </main>
