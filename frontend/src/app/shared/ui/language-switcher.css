@@ -11,7 +11,7 @@
   border-radius: 14px;
   padding: 6px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 2px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   z-index: 20;
@@ -28,6 +28,7 @@
   color: var(--text-soft);
   cursor: pointer;
   text-align: left;
+  white-space: nowrap;
 }
 .lang-opt:hover {
   background: var(--pink-100);

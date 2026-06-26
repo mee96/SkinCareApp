@@ -1,0 +1,55 @@
+{
+  "learn": {
+    "title": "Learn",
+    "back": "Back",
+    "articles": {
+      "skinType": {
+        "title": "How to know your skin type",
+        "summary": "Combination, oily, dry, normal or sensitive — discover yours.",
+        "intro": "Wash your face with a gentle cleanser and wait 30 minutes without applying anything else.",
+        "groups": [
+          { "label": "Oily skin", "value": "shines all over the face, especially in the T-zone (forehead, nose, chin)." },
+          { "label": "Dry skin", "value": "feels tight, may have visible flaking." },
+          { "label": "Combination skin", "value": "shines in the T-zone but the cheeks stay normal or dry." },
+          { "label": "Normal skin", "value": "balanced, without excess shine or tightness." },
+          { "label": "Sensitive skin", "value": "can turn red, itch or react easily to new products." }
+        ]
+      },
+      "routineSteps": {
+        "title": "The steps of the Korean routine",
+        "summary": "The right order: from lightest to heaviest.",
+        "groups": [
+          { "label": "Double cleansing (night only)", "value": "first an oil cleanser to dissolve makeup and SPF, then a water-based cleanser for a deeper clean." },
+          { "label": "Toner", "value": "preps the skin and gives it the first layer of hydration." },
+          { "label": "Essence / serum", "value": "the treatment step, with the most concentrated actives." },
+          { "label": "Eye cream", "value": "the thinner skin around the eyes needs specific care." },
+          { "label": "Moisturizer", "value": "seals in everything you've applied before." },
+          { "label": "SPF (morning only)", "value": "the last and most important step of the day." }
+        ]
+      },
+      "ingredientsByConcern": {
+        "title": "Which ingredients for each concern",
+        "summary": "Niacinamide, retinal, vitamin C... what's good for what.",
+        "groups": [
+          { "label": "Acne / breakouts", "value": "Niacinamide, BHA (salicylic acid), azelaic acid. Avoid comedogenic oils." },
+          { "label": "Rosacea", "value": "Niacinamide, centella asiatica, azelaic acid. Be careful with strong retinoids and harsh exfoliants." },
+          { "label": "Wrinkles", "value": "Retinal/retinol, peptides, vitamin C." },
+          { "label": "Brightening", "value": "Vitamin C, niacinamide, tranexamic acid." },
+          { "label": "Dark spots", "value": "Vitamin C, azelaic acid, and especially consistent SPF." },
+          { "label": "Pores", "value": "BHA, niacinamide." },
+          { "label": "Dehydration", "value": "Hyaluronic acid, glycerin, ceramides." }
+        ]
+      },
+      "spfImportance": {
+        "title": "The importance of sunscreen",
+        "summary": "The step you can never skip, winter or summer.",
+        "content": [
+          "SPF is the only product that truly <strong>fights aging</strong>: it prevents accumulated sun damage, responsible for most signs of premature aging.",
+          "It should be used <strong>every day</strong>, even if you stay home or the sky is cloudy — UVA rays pass through clouds and glass.",
+          "<strong>Reapply it</strong> if you spend many hours in direct sun; a single morning application doesn't last all day under intense exposure."
+        ],
+        "warning": "If you use retinoids (retinal, retinol), photosensitivity increases. SPF stops being optional."
+      }
+    }
+  }
+}

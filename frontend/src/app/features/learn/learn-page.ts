@@ -2,18 +2,21 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { LucideAngularModule, Search, ListOrdered, FlaskConical, Sun, ChevronLeft, type LucideIconData } from 'lucide-angular';
 import { TranslatePipe } from '@ngx-translate/core';
 
+type ArticleFormat = 'checklist-groups' | 'numbered-groups' | 'groups' | 'prose';
+
 interface Article {
   id: string;
   icon: LucideIconData;
-  key: string; // arrel dins de learn.articles.* al JSON
-  contentLength: number; // quants paràgrafs té (per iterar-los)
+  key: string;
+  format: ArticleFormat;
+  itemCount: number; // quants ítems/paràgrafs/grups té
 }
 
 const ARTICLES: Article[] = [
-  { id: 'skin-type', icon: Search, key: 'skinType', contentLength: 6 },
-  { id: 'routine-steps', icon: ListOrdered, key: 'routineSteps', contentLength: 6 },
-  { id: 'ingredients-by-concern', icon: FlaskConical, key: 'ingredientsByConcern', contentLength: 7 },
-  { id: 'spf-importance', icon: Sun, key: 'spfImportance', contentLength: 4 },
+  { id: 'skin-type', icon: Search, key: 'skinType', format: 'checklist-groups', itemCount: 5 },
+  { id: 'routine-steps', icon: ListOrdered, key: 'routineSteps', format: 'numbered-groups', itemCount: 6 },
+  { id: 'ingredients-by-concern', icon: FlaskConical, key: 'ingredientsByConcern', format: 'groups', itemCount: 7 },
+  { id: 'spf-importance', icon: Sun, key: 'spfImportance', format: 'prose', itemCount: 3 },
 ];
 
 @Component({
@@ -30,8 +33,8 @@ export class LearnPage {
   readonly ChevronLeftIcon = ChevronLeft;
   readonly iconSize = 20;
 
-  paragraphIndexes(article: Article): number[] {
-    return Array.from({ length: article.contentLength }, (_, i) => i);
+  itemIndexes(article: Article): number[] {
+    return Array.from({ length: article.itemCount }, (_, i) => i);
   }
 
   open(article: Article): void {

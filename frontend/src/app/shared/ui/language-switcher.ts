@@ -10,7 +10,7 @@ const LANG_OPTIONS: LangOption[] = [
   { code: 'ca', label: 'CA' },
   { code: 'es', label: 'ES' },
   { code: 'en', label: 'EN' },
-  { code: 'ko', label: 'KO' },
+  { code: 'ko', label: '한국어' },
 ];
 
 @Component({

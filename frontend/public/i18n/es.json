@@ -1,54 +1,54 @@
 {
   "learn": {
-    "title": "Aprendre",
-    "back": "Tornar",
+    "title": "Aprender",
+    "back": "Volver",
     "articles": {
       "skinType": {
-        "title": "Com saber el teu tipus de pell",
-        "summary": "Mixta, grassa, seca, normal o sensible — descobreix la teva.",
-        "content": [
-          "Renta la cara amb un netejador suau i espera 30 minuts sense aplicar res més.",
-          "Pell grassa: brilla per tota la cara, sobretot a la zona T (front, nas, mentó).",
-          "Pell seca: es nota tibant, pot tenir descamació visible.",
-          "Pell mixta: brilla a la zona T però les galtes es mantenen normals o seques.",
-          "Pell normal: equilibrada, sense brillantor excessiva ni tibantor.",
-          "Pell sensible: es pot envermellir, picar o reaccionar fàcilment a productes nous."
+        "title": "Cómo saber tu tipo de piel",
+        "summary": "Mixta, grasa, seca, normal o sensible — descubre la tuya.",
+        "intro": "Lávate la cara con un limpiador suave y espera 30 minutos sin aplicar nada más.",
+        "groups": [
+          { "label": "Piel grasa", "value": "brilla por toda la cara, sobre todo en la zona T (frente, nariz, mentón)." },
+          { "label": "Piel seca", "value": "se nota tirante, puede tener descamación visible." },
+          { "label": "Piel mixta", "value": "brilla en la zona T pero las mejillas se mantienen normales o secas." },
+          { "label": "Piel normal", "value": "equilibrada, sin brillo excesivo ni tirantez." },
+          { "label": "Piel sensible", "value": "puede enrojecerse, picar o reaccionar fácilmente a productos nuevos." }
         ]
       },
       "routineSteps": {
-        "title": "Els passos de la rutina coreana",
-        "summary": "L'ordre correcte: de més lleuger a més dens.",
-        "content": [
-          "Doble neteja (només a la nit): primer un netejador d'oli per dissoldre maquillatge i SPF, després un netejador aquós per netejar de debò.",
-          "Tònic: prepara la pell i li dona la primera capa d'hidratació.",
-          "Essència / sèrum: el pas de tractament, amb els actius més concentrats.",
-          "Contorn d'ulls: la pell més fina necessita una cura específica.",
-          "Hidratant: segella tot el que has aplicat abans.",
-          "SPF (només al matí): l'últim pas i el més important del dia."
+        "title": "Los pasos de la rutina coreana",
+        "summary": "El orden correcto: de más ligero a más denso.",
+        "groups": [
+          { "label": "Doble limpieza (solo de noche)", "value": "primero un limpiador de aceite para disolver maquillaje y SPF, después un limpiador acuoso para limpiar de verdad." },
+          { "label": "Tónico", "value": "prepara la piel y le da la primera capa de hidratación." },
+          { "label": "Esencia / sérum", "value": "el paso de tratamiento, con los activos más concentrados." },
+          { "label": "Contorno de ojos", "value": "la piel más fina necesita un cuidado específico." },
+          { "label": "Hidratante", "value": "sella todo lo que has aplicado antes." },
+          { "label": "SPF (solo por la mañana)", "value": "el último paso y el más importante del día." }
         ]
       },
       "ingredientsByConcern": {
-        "title": "Quins ingredients per cada preocupació",
-        "summary": "Niacinamida, retinal, vitamina C... què serveix per a què.",
-        "content": [
-          "Grans / acne: niacinamida, BHA (àcid salicílic), àcid azelaic. Evita olis comedogènics.",
-          "Rosàcia: niacinamida, centella asiàtica, àcid azelaic. Vigila amb retinoides forts i exfoliants agressius.",
-          "Arrugues: retinal/retinol, pèptids, vitamina C.",
-          "Il·luminació: vitamina C, niacinamida, àcid tranexàmic.",
-          "Taques fosques: vitamina C, àcid azelaic, i sobretot SPF constant.",
-          "Porus: BHA, niacinamida.",
-          "Deshidratació: àcid hialurònic, glicerina, ceramides."
+        "title": "Qué ingredientes para cada preocupación",
+        "summary": "Niacinamida, retinal, vitamina C... qué sirve para qué.",
+        "groups": [
+          { "label": "Granos / acné", "value": "Niacinamida, BHA (ácido salicílico), ácido azelaico. Evita aceites comedogénicos." },
+          { "label": "Rosácea", "value": "Niacinamida, centella asiática, ácido azelaico. Cuidado con retinoides fuertes y exfoliantes agresivos." },
+          { "label": "Arrugas", "value": "Retinal/retinol, péptidos, vitamina C." },
+          { "label": "Luminosidad", "value": "Vitamina C, niacinamida, ácido tranexámico." },
+          { "label": "Manchas oscuras", "value": "Vitamina C, ácido azelaico, y sobre todo SPF constante." },
+          { "label": "Poros", "value": "BHA, niacinamida." },
+          { "label": "Deshidratación", "value": "Ácido hialurónico, glicerina, ceramidas." }
         ]
       },
       "spfImportance": {
-        "title": "La importància de la crema solar",
-        "summary": "El pas que no et pots saltar mai, sigui hivern o estiu.",
+        "title": "La importancia de la crema solar",
+        "summary": "El paso que nunca te puedes saltar, sea invierno o verano.",
         "content": [
-          "L'SPF és l'únic producte que de debò \"antienvelleix\": evita el dany solar acumulat, responsable de la majoria de signes d'envelliment prematur.",
-          "Es fa servir cada dia, encara que estiguis a casa o el cel estigui ennuvolat — els raigs UVA travessen els núvols i els vidres.",
-          "Si fas servir retinoides (retinal, retinol), la fotosensibilitat augmenta. L'SPF deixa de ser opcional.",
-          "Reaplica'l si passes moltes hores al sol directe; una sola aplicació al matí no dura tot el dia en exposició intensa."
-        ]
+          "El SPF es el único producto que de verdad <strong>antienvejece</strong>: evita el daño solar acumulado, responsable de la mayoría de signos de envejecimiento prematuro.",
+          "Se usa <strong>todos los días</strong>, aunque te quedes en casa o el cielo esté nublado — los rayos UVA atraviesan las nubes y los cristales.",
+          "<strong>Reaplícalo</strong> si pasas muchas horas al sol directo; una sola aplicación por la mañana no dura todo el día en exposición intensa."
+        ],
+        "warning": "Si usas retinoides (retinal, retinol), la fotosensibilidad aumenta. El SPF deja de ser opcional."
       }
     }
   }

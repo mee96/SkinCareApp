@@ -1,14 +1,56 @@
 @if (selected()) {
-  <div class="article-view">
-    <button class="back-btn" (click)="closeArticle()">
-      <lucide-icon [img]="ChevronLeftIcon" [size]="iconSize" /> {{ 'learn.back' | translate }}
-    </button>
-    <h1>
-      <lucide-icon [img]="selected()!.icon" [size]="22" />
-      {{ 'learn.articles.' + selected()!.key + '.title' | translate }}
-    </h1>
-    @for (i of paragraphIndexes(selected()!); track i) {
-      <p>{{ 'learn.articles.' + selected()!.key + '.content.' + i | translate }}</p>
+  <button class="back-btn" (click)="closeArticle()">
+    <lucide-icon [img]="ChevronLeftIcon" [size]="iconSize" /> {{ 'learn.back' | translate }}
+  </button>
+
+  <div class="article-card-view">
+    <div class="article-head">
+      <span class="article-icon">
+        <lucide-icon [img]="selected()!.icon" [size]="22" />
+      </span>
+      <h1>{{ 'learn.articles.' + selected()!.key + '.title' | translate }}</h1>
+    </div>
+
+    @switch (selected()!.format) {
+      @case ('checklist-groups') {
+        <p class="intro-text">{{ 'learn.articles.' + selected()!.key + '.intro' | translate }}</p>
+        <ul class="checklist">
+          @for (i of itemIndexes(selected()!); track i) {
+            <li class="check-item">
+              <span class="dot"></span>
+              <span><strong>{{ 'learn.articles.' + selected()!.key + '.groups.' + i + '.label' | translate }}</strong>: {{ 'learn.articles.' + selected()!.key + '.groups.' + i + '.value' | translate }}</span>
+            </li>
+          }
+        </ul>
+      }
+      @case ('numbered-groups') {
+        <ul class="step-list">
+          @for (i of itemIndexes(selected()!); track i) {
+            <li class="step-item">
+              <span class="step-num">{{ i + 1 }}</span>
+              <span><strong>{{ 'learn.articles.' + selected()!.key + '.groups.' + i + '.label' | translate }}</strong>: {{ 'learn.articles.' + selected()!.key + '.groups.' + i + '.value' | translate }}</span>
+            </li>
+          }
+        </ul>
+      }
+      @case ('groups') {
+        <div class="group-list">
+          @for (i of itemIndexes(selected()!); track i) {
+            <div class="group-item">
+              <h3>{{ 'learn.articles.' + selected()!.key + '.groups.' + i + '.label' | translate }}</h3>
+              <p>{{ 'learn.articles.' + selected()!.key + '.groups.' + i + '.value' | translate }}</p>
+            </div>
+          }
+        </div>
+      }
+      @case ('prose') {
+        <div class="prose">
+          @for (i of itemIndexes(selected()!); track i) {
+            <p [innerHTML]="'learn.articles.' + selected()!.key + '.content.' + i | translate"></p>
+          }
+        </div>
+        <div class="warning-box">{{ 'learn.articles.' + selected()!.key + '.warning' | translate }}</div>
+      }
     }
   </div>
 } @else {
