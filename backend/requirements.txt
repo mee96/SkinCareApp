@@ -6,3 +6,4 @@ cryptography
 python-dotenv
 pydantic-settings
 email-validator
+groq

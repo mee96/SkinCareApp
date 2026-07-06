@@ -11,6 +11,7 @@ class Settings(BaseSettings):
     DB_PASSWORD: str
     DB_SSL_CA: str = "ca.pem"
     DB_SSL_CA_CONTENT: str | None = None
+    GROQ_API_KEY: str
 
 
 settings = Settings()

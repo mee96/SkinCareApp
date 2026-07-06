@@ -1,17 +1,67 @@
-<h1>El meu inventari</h1>
-
 @if (loading()) {
-  <p>Carregant...</p>
+  <p class="state-msg">{{ 'today.loading' | translate }}</p>
 } @else {
-  <ul>
-    @for (product of products(); track product.id) {
-      <li>
-        <strong>{{ product.name }}</strong>
-        @if (product.brand) { <span> — {{ product.brand }}</span> }
-        <em> ({{ product.slot_id }})</em>
-      </li>
-    } @empty {
-      <li>Encara no tens productes.</li>
+  @if (missingSlots().length > 0) {
+    <div class="alert-box">
+      <lucide-icon [img]="AlertIcon" [size]="20" class="alert-icon" />
+      <div>
+        <p class="alert-title">{{ 'stock.alerts.title' | translate }}</p>
+        <ul class="alert-list">
+          @for (slot of missingSlots(); track slot) {
+            <li>{{ 'today.slots.' + slot | translate }}</li>
+          }
+        </ul>
+      </div>
+    </div>
+  }
+
+  <h1 class="page-title">{{ 'stock.title' | translate }}</h1>
+
+  <h2 class="section-title">{{ 'stock.inStock' | translate }}</h2>
+  <div class="card-list">
+    @for (product of inStockProducts(); track product.id) {
+      <div class="product-card">
+        <div class="product-info">
+          <span class="product-name">{{ product.name }}</span>
+          @if (product.brand) {
+            <span class="product-brand">{{ product.brand }}</span>
+          }
+          <span class="product-slot">{{ 'today.slots.' + product.slot_id | translate }}</span>
+        </div>
+        <button
+          type="button"
+          class="toggle-btn in-stock"
+          [attr.aria-label]="'stock.toggleOn' | translate"
+          (click)="toggleStock(product)"
+        >
+          <lucide-icon [img]="PackageCheckIcon" [size]="16" />
+        </button>
+      </div>
     }
-  </ul>
+  </div>
+
+  @if (outOfStockProducts().length > 0) {
+    <h2 class="section-title">{{ 'stock.outOfStock' | translate }}</h2>
+    <div class="card-list">
+      @for (product of outOfStockProducts(); track product.id) {
+        <div class="product-card out">
+          <div class="product-info">
+            <span class="product-name">{{ product.name }}</span>
+            @if (product.brand) {
+              <span class="product-brand">{{ product.brand }}</span>
+            }
+            <span class="product-slot">{{ 'today.slots.' + product.slot_id | translate }}</span>
+          </div>
+          <button
+            type="button"
+            class="toggle-btn out-of-stock"
+            [attr.aria-label]="'stock.toggleOff' | translate"
+            (click)="toggleStock(product)"
+          >
+            <lucide-icon [img]="PackageXIcon" [size]="16" />
+          </button>
+        </div>
+      }
+    </div>
+  }
 }

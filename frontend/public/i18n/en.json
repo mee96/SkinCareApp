@@ -131,5 +131,16 @@
       "googleRegisterFailed": "Couldn't complete registration with Google.",
       "missingFields": "Enter your name and choose a skin type to continue."
     }
+  },
+  "stock": {
+    "title": "My stock",
+    "inStock": "In stock",
+    "outOfStock": "Out of stock",
+    "toggleOn": "Mark as out of stock",
+    "toggleOff": "Mark as available",
+    "alerts": {
+      "title": "You're missing essential products:",
+      "missing": "You have no product in stock for: "
+    }
   }
 }
