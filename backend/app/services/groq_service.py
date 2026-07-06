@@ -43,6 +43,42 @@ If you cannot identify the product, return {"name": null, "brand": null, "slot_i
     return json.loads(raw.strip())
 
 
+def classify_product(name: str, brand: str | None) -> dict:
+    """Classifica un producte al seu slot de rutina a partir del nom i la marca."""
+    response = client.chat.completions.create(
+        model="llama-3.3-70b-versatile",
+        messages=[
+            {
+                "role": "user",
+                "content": f"""You are a skincare product expert. Given a product name and brand, classify it into exactly one routine slot. Respond ONLY with a JSON object (no markdown, no explanation) with this exact key:
+{{
+  "slot_id": "one of: oil-cleanser, water-cleanser, toner, essence, treatment-serum, exfoliant, eye, moisturizer, spf"
+}}
+If you cannot determine it, return {{"slot_id": "moisturizer"}}.
+
+Product name: {name}
+Brand: {brand or "unknown"}""",
+            }
+        ],
+        max_tokens=60,
+    )
+
+    import json
+    raw = response.choices[0].message.content.strip()
+    # neteja possible markdown
+    if raw.startswith("```"):
+        raw = raw.split("```")[1]
+        if raw.startswith("json"):
+            raw = raw[4:]
+    try:
+        result = json.loads(raw.strip())
+    except (json.JSONDecodeError, ValueError):
+        return {"slot_id": "moisturizer"}  # fallback segur
+    if not result.get("slot_id"):
+        result = {"slot_id": "moisturizer"}
+    return result
+
+
 def check_ingredients(
     product_name: str,
     brand: str | None,

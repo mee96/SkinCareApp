@@ -9,7 +9,7 @@ from app.models.product import Product
 from app.schemas.product import ProductCreate, ProductUpdate, ProductOut
 
 from pydantic import BaseModel
-from app.services.groq_service import scan_product_image, check_ingredients
+from app.services.groq_service import scan_product_image, check_ingredients, classify_product
 
 router = APIRouter(prefix="/products", tags=["products"])
 crud = CRUDBase[Product, ProductCreate, ProductUpdate](
@@ -49,6 +49,10 @@ class ScanImageRequest(BaseModel):
     image_base64: str
     media_type: str = "image/jpeg"
 
+class ClassifyProductRequest(BaseModel):
+    name: str
+    brand: str | None = None
+
 class CheckIngredientsRequest(BaseModel):
     product_name: str
     brand: str | None = None
@@ -63,6 +67,14 @@ def scan_image(payload: ScanImageRequest):
         return result
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error processant la imatge: {str(e)}")
+
+@router.post("/classify")
+def classify(payload: ClassifyProductRequest):
+    try:
+        result = classify_product(payload.name, payload.brand)
+        return result
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error classificant el producte: {str(e)}")
 
 @router.post("/check-ingredients")
 def check_product_ingredients(payload: CheckIngredientsRequest):

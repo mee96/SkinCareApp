@@ -117,3 +117,142 @@
 .alert-list li {
   margin: 2px 0;
 }
+
+/* --- Capçalera amb botó afegir --- */
+.page-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.add-btn {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.add-btn:active {
+  transform: scale(0.92);
+}
+
+/* --- Formulari afegir producte --- */
+.back-btn {
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-soft);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 0;
+  margin-top: 8px;
+}
+
+.add-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.field-input {
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+}
+.field-input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.slot-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.slot-chip {
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 7px 12px;
+  border-radius: 20px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--text-soft);
+  cursor: pointer;
+  transition: 0.15s;
+}
+.slot-chip.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.scan-btn {
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 11px 14px;
+  border-radius: 12px;
+  border: 1.5px dashed var(--primary);
+  background: color-mix(in srgb, var(--primary) 8%, var(--surface));
+  color: var(--primary);
+  cursor: pointer;
+  transition: 0.15s;
+}
+.scan-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.form-error {
+  font-size: 0.82rem;
+  color: var(--danger);
+  margin: 0;
+}
+
+.save-btn {
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: none;
+  background: var(--primary);
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.15s, opacity 0.2s;
+}
+.save-btn:active {
+  transform: scale(0.98);
+}
+.save-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
