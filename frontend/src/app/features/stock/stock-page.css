@@ -218,6 +218,10 @@
   font: inherit;
   font-size: 0.88rem;
   font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   padding: 11px 14px;
   border-radius: 12px;
   border: 1.5px dashed var(--primary);
@@ -255,4 +259,82 @@
 .save-btn:disabled {
   opacity: 0.6;
   cursor: default;
+}
+
+/* --- Accés futur a la wishlist (decoratiu) --- */
+.wishlist-access {
+  display: flex;
+  justify-content: flex-end;
+  color: var(--ink-500);
+  padding: 8px 0 4px;
+}
+
+/* --- Estat buit --- */
+.empty-state {
+  text-align: center;
+  margin-top: 64px;
+}
+.empty-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 8px;
+}
+.empty-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-soft);
+  margin: 0;
+}
+
+/* --- Botons petits de la card (esborrar + wishlist) --- */
+.card-actions {
+  display: flex;
+  gap: 8px;
+  flex: none;
+}
+
+.mini-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, color 0.2s;
+}
+.mini-btn:active {
+  transform: scale(0.9);
+}
+.mini-btn.delete {
+  color: var(--danger);
+  border-color: var(--danger);
+}
+.mini-btn.wishlist {
+  color: var(--ink-500);
+  border-color: var(--ink-500);
+}
+
+/* --- FAB (botó flotant per afegir producte) --- */
+.fab {
+  position: fixed;
+  bottom: 80px;
+  right: 16px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  transition: transform 0.15s;
+}
+.fab:active {
+  transform: scale(0.92);
 }

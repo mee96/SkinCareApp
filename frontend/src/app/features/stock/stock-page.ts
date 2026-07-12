@@ -1,18 +1,17 @@
 import { ChangeDetectionStrategy, Component, inject, signal, computed, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { LucideAngularModule, PackageCheck, PackageX, TriangleAlert, Plus } from 'lucide-angular';
+import {
+  LucideAngularModule,
+  Plus,
+  Trash2,
+  ShoppingBag,
+  Camera,
+  ClipboardList,
+} from 'lucide-angular';
 import { TranslatePipe } from '@ngx-translate/core';
 import { ProductService } from '../../core/services/product';
 import { AuthStore } from '../../core/stores/auth-store';
 import { Product, SlotId } from '../../core/models/product';
-
-const REQUIRED_SLOTS: SlotId[] = [
-  'water-cleanser',
-  'toner',
-  'treatment-serum',
-  'moisturizer',
-  'spf',
-];
 
 @Component({
   selector: 'app-stock-page',
@@ -26,10 +25,11 @@ export class StockPage implements OnInit {
   private productService = inject(ProductService);
   private authStore = inject(AuthStore);
 
-  readonly PackageCheckIcon = PackageCheck;
-  readonly PackageXIcon = PackageX;
-  readonly AlertIcon = TriangleAlert;
   readonly PlusIcon = Plus;
+  readonly Trash2Icon = Trash2;
+  readonly WishlistIcon = ShoppingBag;
+  readonly CameraIcon = Camera;
+  readonly ClipboardIcon = ClipboardList;
 
   readonly products = signal<Product[]>([]);
   readonly loading = signal<boolean>(true);
@@ -45,11 +45,6 @@ export class StockPage implements OnInit {
 
   readonly inStockProducts = computed(() => this.products().filter((p) => p.in_stock));
   readonly outOfStockProducts = computed(() => this.products().filter((p) => !p.in_stock));
-
-  readonly missingSlots = computed<SlotId[]>(() => {
-    const covered = new Set(this.inStockProducts().map((p) => p.slot_id));
-    return REQUIRED_SLOTS.filter((slot) => !covered.has(slot));
-  });
 
   ngOnInit(): void {
     const uid = this.authStore.uid();
@@ -67,13 +62,13 @@ export class StockPage implements OnInit {
     });
   }
 
-  toggleStock(product: Product): void {
-    const next = !product.in_stock;
-    // optimista: actualitzem el signal localment sense esperar resposta
-    this.products.update((list) =>
-      list.map((p) => (p.id === product.id ? { ...p, in_stock: next } : p))
-    );
-    this.productService.toggleStock(product.id, next).subscribe();
+  deleteProduct(product: Product): void {
+    // optimista: traiem el producte del signal; si falla, el restaurem
+    const previous = this.products();
+    this.products.update((list) => list.filter((p) => p.id !== product.id));
+    this.productService.delete(product.id).subscribe({
+      error: () => this.products.set(previous),
+    });
   }
 
   openForm(): void {
