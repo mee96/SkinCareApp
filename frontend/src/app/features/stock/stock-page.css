@@ -338,3 +338,152 @@
 .fab:active {
   transform: scale(0.92);
 }
+
+/* --- Modals flotants (backdrop + card) --- */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+.modal-card {
+  background: var(--surface);
+  border-radius: 20px;
+  padding: 20px;
+  width: 300px;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.modal-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+.modal-text {
+  font-size: 0.84rem;
+  color: var(--text-soft);
+  margin: 0;
+}
+.modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+.modal-btn {
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.84rem;
+  padding: 10px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: 0.15s;
+}
+.modal-btn.danger {
+  background: color-mix(in srgb, var(--danger) 15%, var(--surface));
+  color: var(--danger);
+}
+.modal-btn.primary {
+  background: var(--primary);
+  color: #fff;
+}
+.modal-btn.ghost {
+  background: transparent;
+  color: var(--text-soft);
+}
+.modal-close {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-soft);
+  font-size: 1.2rem;
+  line-height: 1;
+  padding: 0;
+}
+
+/* --- Estrelles clicables --- */
+.review-stars {
+  display: flex;
+  gap: 6px;
+  margin: 4px 0;
+}
+.star-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  color: var(--border);
+  transition: color 0.15s, transform 0.1s;
+}
+.star-btn.filled {
+  color: var(--warning);
+}
+.star-btn:hover {
+  transform: scale(1.2);
+  color: var(--warning);
+}
+
+/* --- Textarea de notes --- */
+.review-notes {
+  width: 100%;
+  min-height: 80px;
+  font: inherit;
+  font-size: 0.84rem;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1.5px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  resize: vertical;
+  box-sizing: border-box;
+}
+.review-notes:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* --- Secció wishlist --- */
+.wishlist-section {
+  margin-top: 24px;
+}
+.wishlist-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.wishlist-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+.wishlist-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.wishlist-item-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.wishlist-item-brand {
+  font-size: 0.76rem;
+  color: var(--text-soft);
+}

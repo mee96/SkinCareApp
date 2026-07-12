@@ -68,7 +68,7 @@
     <h2 class="section-title">{{ 'stock.inStock' | translate }}</h2>
     <div class="card-list">
       @for (product of inStockProducts(); track product.id) {
-        <div class="product-card">
+        <div class="product-card" (click)="openReview(product)">
           <div class="product-info">
             <span class="product-name">{{ product.name }}</span>
             @if (product.brand) {
@@ -81,15 +81,15 @@
               type="button"
               class="mini-btn delete"
               aria-label="Esborrar producte"
-              (click)="deleteProduct(product)"
+              (click)="$event.stopPropagation(); openDeleteModal(product)"
             >
               <lucide-icon [img]="Trash2Icon" [size]="14" />
             </button>
             <button
               type="button"
               class="mini-btn wishlist"
-              aria-label="Afegir a la wishlist"
-              (click)="null"
+              aria-label="Passar a la llista de la compra"
+              (click)="$event.stopPropagation(); moveToWishlist(product)"
             >
               <lucide-icon [img]="WishlistIcon" [size]="14" />
             </button>
@@ -103,7 +103,7 @@
     <h2 class="section-title">{{ 'stock.outOfStock' | translate }}</h2>
     <div class="card-list">
       @for (product of outOfStockProducts(); track product.id) {
-        <div class="product-card out">
+        <div class="product-card out" (click)="openReview(product)">
           <div class="product-info">
             <span class="product-name">{{ product.name }}</span>
             @if (product.brand) {
@@ -116,17 +116,51 @@
               type="button"
               class="mini-btn delete"
               aria-label="Esborrar producte"
-              (click)="deleteProduct(product)"
+              (click)="$event.stopPropagation(); openDeleteModal(product)"
             >
               <lucide-icon [img]="Trash2Icon" [size]="14" />
             </button>
             <button
               type="button"
               class="mini-btn wishlist"
-              aria-label="Afegir a la wishlist"
-              (click)="null"
+              aria-label="Passar a la llista de la compra"
+              (click)="$event.stopPropagation(); moveToWishlist(product)"
             >
               <lucide-icon [img]="WishlistIcon" [size]="14" />
+            </button>
+          </div>
+        </div>
+      }
+    </div>
+  }
+
+  @if (wishlistItems().length > 0) {
+    <div class="wishlist-section">
+      <h2 class="wishlist-title">Llista de la compra</h2>
+      @for (item of wishlistItems(); track item.id) {
+        <div class="wishlist-item">
+          <div class="wishlist-item-info">
+            <span class="wishlist-item-name">{{ item.product_name }}</span>
+            @if (item.brand) {
+              <span class="wishlist-item-brand">{{ item.brand }}</span>
+            }
+          </div>
+          <div class="card-actions">
+            <button
+              type="button"
+              class="mini-btn wishlist"
+              aria-label="Tornar al stock"
+              (click)="addBackToStock(item)"
+            >
+              <lucide-icon [img]="PackagePlusIcon" [size]="14" />
+            </button>
+            <button
+              type="button"
+              class="mini-btn delete"
+              aria-label="Treure de la llista de la compra"
+              (click)="removeFromWishlist(item.id)"
+            >
+              <lucide-icon [img]="Trash2Icon" [size]="14" />
             </button>
           </div>
         </div>
@@ -137,4 +171,65 @@
   <button type="button" class="fab" (click)="openForm()" aria-label="Afegir producte">
     <lucide-icon [img]="PlusIcon" [size]="24" />
   </button>
+
+  @if (showDeleteModal(); as target) {
+    <div class="modal-backdrop" (click)="showDeleteModal.set(null)">
+      <div class="modal-card" (click)="$event.stopPropagation()">
+        <button
+          type="button"
+          class="modal-close"
+          aria-label="Cancel·lar"
+          (click)="showDeleteModal.set(null)"
+        >
+          ✕
+        </button>
+        <h3 class="modal-title">{{ target.name }}</h3>
+        <p class="modal-text">Què vols fer amb aquest producte?</p>
+        <div class="modal-actions">
+          <button type="button" class="modal-btn danger" (click)="confirmDelete()">
+            Esborrar definitivament
+          </button>
+          <button type="button" class="modal-btn ghost" (click)="showDeleteModal.set(null)">
+            Cancel·lar
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+
+  @if (reviewProduct(); as target) {
+    <div class="modal-backdrop" (click)="closeReview()">
+      <div class="modal-card" (click)="$event.stopPropagation()">
+        <button type="button" class="modal-close" aria-label="Tancar" (click)="closeReview()">
+          ✕
+        </button>
+        <h3 class="modal-title">{{ target.name }}</h3>
+
+        <div class="review-stars">
+          @for (i of stars; track i) {
+            <button
+              type="button"
+              class="star-btn"
+              [class.filled]="i <= reviewRating()"
+              [attr.aria-label]="i + ' estrelles'"
+              (click)="reviewRating.set(i)"
+            >
+              <lucide-icon [img]="StarIcon" [size]="26" />
+            </button>
+          }
+        </div>
+
+        <textarea
+          class="review-notes"
+          name="notes"
+          rows="4"
+          placeholder="Notes..."
+          [ngModel]="reviewNotes()"
+          (ngModelChange)="reviewNotes.set($event)"
+        ></textarea>
+
+        <button type="button" class="save-btn" (click)="saveReview()">Desar</button>
+      </div>
+    </div>
+  }
 }

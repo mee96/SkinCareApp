@@ -7,11 +7,17 @@ import {
   ShoppingBag,
   Camera,
   ClipboardList,
+  Star,
+  PackagePlus,
 } from 'lucide-angular';
 import { TranslatePipe } from '@ngx-translate/core';
 import { ProductService } from '../../core/services/product';
+import { WishlistService } from '../../core/services/wishlist.service';
+import { ProductReviewService } from '../../core/services/product-review.service';
 import { AuthStore } from '../../core/stores/auth-store';
 import { Product, SlotId } from '../../core/models/product';
+import { WishlistItem } from '../../core/models/wishlist';
+import { ProductReview } from '../../core/models/product-review';
 
 @Component({
   selector: 'app-stock-page',
@@ -23,6 +29,8 @@ import { Product, SlotId } from '../../core/models/product';
 })
 export class StockPage implements OnInit {
   private productService = inject(ProductService);
+  private wishlistService = inject(WishlistService);
+  private productReviewService = inject(ProductReviewService);
   private authStore = inject(AuthStore);
 
   readonly PlusIcon = Plus;
@@ -30,9 +38,25 @@ export class StockPage implements OnInit {
   readonly WishlistIcon = ShoppingBag;
   readonly CameraIcon = Camera;
   readonly ClipboardIcon = ClipboardList;
+  readonly StarIcon = Star;
+  readonly PackagePlusIcon = PackagePlus;
+
+  readonly stars = [1, 2, 3, 4, 5];
 
   readonly products = signal<Product[]>([]);
   readonly loading = signal<boolean>(true);
+
+  // wishlist (llista de la compra)
+  readonly wishlistItems = signal<WishlistItem[]>([]);
+
+  // modal d'esborrar producte
+  readonly showDeleteModal = signal<Product | null>(null);
+
+  // popup de review
+  readonly reviewProduct = signal<Product | null>(null);
+  readonly reviewRating = signal<number>(0);
+  readonly reviewNotes = signal<string>('');
+  readonly currentReview = signal<ProductReview | null>(null);
 
   // formulari d'afegir producte
   readonly showForm = signal<boolean>(false);
@@ -60,6 +84,10 @@ export class StockPage implements OnInit {
       },
       error: () => this.loading.set(false),
     });
+
+    this.wishlistService.getByUser(uid).subscribe({
+      next: (items) => this.wishlistItems.set(items),
+    });
   }
 
   deleteProduct(product: Product): void {
@@ -68,6 +96,83 @@ export class StockPage implements OnInit {
     this.products.update((list) => list.filter((p) => p.id !== product.id));
     this.productService.delete(product.id).subscribe({
       error: () => this.products.set(previous),
+    });
+  }
+
+  // --- Modal d'esborrar ---
+  openDeleteModal(product: Product): void {
+    this.showDeleteModal.set(product);
+  }
+
+  confirmDelete(): void {
+    const product = this.showDeleteModal();
+    if (!product) return;
+    this.deleteProduct(product);
+    this.showDeleteModal.set(null);
+  }
+
+  moveToWishlist(product: Product): void {
+    const uid = this.authStore.uid();
+    if (!uid) return;
+    this.wishlistService.add(uid, product.name, product.brand, product.slot_id).subscribe({
+      next: (item) => this.wishlistItems.update((list) => [...list, item]),
+    });
+    this.deleteProduct(product);
+    this.showDeleteModal.set(null);
+  }
+
+  // --- Popup de review ---
+  openReview(product: Product): void {
+    const uid = this.authStore.uid();
+    if (!uid) return;
+    this.reviewProduct.set(product);
+    this.reviewRating.set(0);
+    this.reviewNotes.set('');
+    this.currentReview.set(null);
+    this.productReviewService.getForProduct(product.id, uid).subscribe({
+      next: (review) => {
+        this.currentReview.set(review);
+        this.reviewRating.set(review.rating);
+        this.reviewNotes.set(review.notes ?? '');
+      },
+      // si no existeix (404) deixem rating 0 i notes buides
+      error: () => {},
+    });
+  }
+
+  saveReview(): void {
+    const uid = this.authStore.uid();
+    const product = this.reviewProduct();
+    if (!uid || !product) return;
+    this.productReviewService
+      .save(uid, product.id, this.reviewRating(), this.reviewNotes())
+      .subscribe({
+        next: (review) => {
+          this.currentReview.set(review);
+          this.closeReview();
+        },
+      });
+  }
+
+  closeReview(): void {
+    this.reviewProduct.set(null);
+  }
+
+  // --- Wishlist ---
+  addBackToStock(item: WishlistItem): void {
+    const uid = this.authStore.uid();
+    if (!uid) return;
+    this.productService
+      .addProduct(uid, item.product_name, item.brand ?? '', (item.slot_id as SlotId) ?? 'moisturizer')
+      .subscribe({
+        next: (product) => this.products.update((list) => [...list, product]),
+      });
+    this.removeFromWishlist(item.id);
+  }
+
+  removeFromWishlist(id: number): void {
+    this.wishlistService.remove(id).subscribe({
+      next: () => this.wishlistItems.update((list) => list.filter((w) => w.id !== id)),
     });
   }
 
