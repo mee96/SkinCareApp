@@ -7,6 +7,8 @@ from app.models.routine_type import RoutineType
 from app.models.routine_slot import RoutineSlot
 from app.models.step_log import StepLog
 from app.models.ingredient import Ingredient
+from app.models.wishlist import Wishlist
+from app.models.product_review import ProductReview
 
 __all__ = [
     "User",
@@ -18,4 +20,6 @@ __all__ = [
     "RoutineSlot",
     "StepLog",
     "Ingredient",
+    "Wishlist",
+    "ProductReview",
 ]

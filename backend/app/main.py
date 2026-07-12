@@ -6,7 +6,7 @@ from sqlalchemy import text
 from sqlalchemy.orm import Session
 from app.core.database import get_db
 import app.models  # registra tots els models SQLAlchemy (evita NoReferencedTableError)
-from app.routers import user, product, concern, schedule, routine_step_def, step_log, catalog
+from app.routers import user, product, concern, schedule, routine_step_def, step_log, catalog, wishlist, product_review
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="SkinCareApp API")
@@ -30,6 +30,8 @@ app.include_router(schedule.router)
 app.include_router(routine_step_def.router)
 app.include_router(step_log.router)
 app.include_router(catalog.router)
+app.include_router(wishlist.router)
+app.include_router(product_review.router)
 
 
 
