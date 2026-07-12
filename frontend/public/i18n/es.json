@@ -141,6 +141,36 @@
     "alerts": {
       "title": "Te faltan productos obligatorios:",
       "missing": "No tienes ningún producto en stock para: "
+    },
+    "empty": "Aquí van tus productos, sube el primero",
+    "form": {
+      "title": "Añadir producto",
+      "back": "Volver",
+      "namePlaceholder": "Nombre del producto *",
+      "brandPlaceholder": "Marca (opcional)",
+      "scanBtn": "O sube una foto",
+      "scanning": "Analizando...",
+      "save": "Guardar",
+      "saving": "Guardando...",
+      "error": "No se ha podido clasificar el producto",
+      "errorNoName": "Hay que indicar un nombre.",
+      "errorSave": "No se ha podido guardar el producto.",
+      "errorScan": "No se ha podido analizar la foto."
+    },
+    "delete": {
+      "title": "Eliminar producto",
+      "message": "¿Quieres eliminar este producto definitivamente?",
+      "confirm": "Eliminar definitivamente",
+      "cancel": "Cancelar"
+    },
+    "review": {
+      "title": "Mi opinión",
+      "placeholder": "Escribe un comentario... (opcional)",
+      "save": "Guardar opinión"
+    },
+    "wishlist": {
+      "title": "Lista de la compra",
+      "backToStock": "Volver al stock"
     }
   }
 }

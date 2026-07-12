@@ -141,6 +141,36 @@
     "alerts": {
       "title": "You're missing essential products:",
       "missing": "You have no product in stock for: "
+    },
+    "empty": "Here go your products, upload the first one",
+    "form": {
+      "title": "Add product",
+      "back": "Back",
+      "namePlaceholder": "Product name *",
+      "brandPlaceholder": "Brand (optional)",
+      "scanBtn": "Or upload a photo",
+      "scanning": "Analyzing...",
+      "save": "Save",
+      "saving": "Saving...",
+      "error": "Couldn't classify the product",
+      "errorNoName": "A name is required.",
+      "errorSave": "Couldn't save the product.",
+      "errorScan": "Couldn't analyze the photo."
+    },
+    "delete": {
+      "title": "Delete product",
+      "message": "Do you want to delete this product permanently?",
+      "confirm": "Delete permanently",
+      "cancel": "Cancel"
+    },
+    "review": {
+      "title": "My review",
+      "placeholder": "Write a comment... (optional)",
+      "save": "Save review"
+    },
+    "wishlist": {
+      "title": "Shopping list",
+      "backToStock": "Back to stock"
     }
   }
 }

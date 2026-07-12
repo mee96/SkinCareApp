@@ -141,6 +141,36 @@
   "alerts": {
     "title": "Et falten productes obligatoris:",
     "missing": "No tens cap producte en stock per a: "
+  },
+  "empty": "Aquí van els teus productes, puja el primer",
+  "form": {
+    "title": "Afegir producte",
+    "back": "Tornar",
+    "namePlaceholder": "Nom del producte *",
+    "brandPlaceholder": "Marca (opcional)",
+    "scanBtn": "O puja una foto",
+    "scanning": "Analitzant...",
+    "save": "Desar",
+    "saving": "Desant...",
+    "error": "No s'ha pogut classificar el producte",
+    "errorNoName": "Cal indicar un nom.",
+    "errorSave": "No s'ha pogut desar el producte.",
+    "errorScan": "No s'ha pogut analitzar la foto."
+  },
+  "delete": {
+    "title": "Esborrar producte",
+    "message": "Vols esborrar aquest producte definitivament?",
+    "confirm": "Esborrar definitivament",
+    "cancel": "Cancel·lar"
+  },
+  "review": {
+    "title": "La meva opinió",
+    "placeholder": "Escriu un comentari... (opcional)",
+    "save": "Desar opinió"
+  },
+  "wishlist": {
+    "title": "Llista de la compra",
+    "backToStock": "Tornar al stock"
   }
 }
 }

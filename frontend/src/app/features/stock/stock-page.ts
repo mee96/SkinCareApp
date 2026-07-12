@@ -191,7 +191,7 @@ export class StockPage implements OnInit {
   saveProduct(): void {
     const name = this.formName().trim();
     if (!name) {
-      this.formError.set('Cal indicar un nom.');
+      this.formError.set('stock.form.errorNoName');
       return;
     }
     const uid = this.authStore.uid();
@@ -211,7 +211,7 @@ export class StockPage implements OnInit {
     this.productService.classifyProduct(name, this.formBrand().trim() || null).subscribe({
       next: (result) => this.persistProduct(uid, name, result.slot_id),
       error: () => {
-        this.formError.set('No s\'ha pogut classificar el producte.');
+        this.formError.set('stock.form.error');
         this.formLoading.set(false);
       },
     });
@@ -225,7 +225,7 @@ export class StockPage implements OnInit {
         this.closeForm();
       },
       error: () => {
-        this.formError.set('No s\'ha pogut desar el producte.');
+        this.formError.set('stock.form.errorSave');
         this.formLoading.set(false);
       },
     });
@@ -253,13 +253,13 @@ export class StockPage implements OnInit {
           this.scanLoading.set(false);
         },
         error: () => {
-          this.formError.set('No s\'ha pogut analitzar la imatge.');
+          this.formError.set('stock.form.errorScan');
           this.scanLoading.set(false);
         },
       });
     };
     reader.onerror = () => {
-      this.formError.set('No s\'ha pogut llegir el fitxer.');
+      this.formError.set('stock.form.errorScan');
       this.scanLoading.set(false);
     };
     reader.readAsDataURL(file);

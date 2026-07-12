@@ -141,6 +141,36 @@
     "alerts": {
       "title": "필수 제품이 부족합니다:",
       "missing": "재고가 없는 항목: "
+    },
+    "empty": "여기에 제품이 들어갑니다. 첫 번째 제품을 올려보세요",
+    "form": {
+      "title": "제품 추가",
+      "back": "뒤로",
+      "namePlaceholder": "제품 이름 *",
+      "brandPlaceholder": "브랜드 (선택)",
+      "scanBtn": "또는 사진 올리기",
+      "scanning": "분석 중...",
+      "save": "저장",
+      "saving": "저장 중...",
+      "error": "제품을 분류할 수 없습니다",
+      "errorNoName": "이름을 입력해야 합니다.",
+      "errorSave": "제품을 저장할 수 없습니다.",
+      "errorScan": "사진을 분석할 수 없습니다."
+    },
+    "delete": {
+      "title": "제품 삭제",
+      "message": "이 제품을 영구적으로 삭제하시겠습니까?",
+      "confirm": "영구 삭제",
+      "cancel": "취소"
+    },
+    "review": {
+      "title": "내 리뷰",
+      "placeholder": "댓글을 작성하세요... (선택)",
+      "save": "리뷰 저장"
+    },
+    "wishlist": {
+      "title": "장바구니",
+      "backToStock": "재고로 되돌리기"
     }
   }
 }

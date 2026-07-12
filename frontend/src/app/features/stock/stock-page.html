@@ -1,31 +1,33 @@
 @if (loading()) {
   <p class="state-msg">{{ 'today.loading' | translate }}</p>
 } @else if (showForm()) {
-  <button type="button" class="back-btn" (click)="closeForm()">← Tornar</button>
-  <h1 class="page-title">Afegir producte</h1>
+  <button type="button" class="back-btn" (click)="closeForm()">← {{ 'stock.form.back' | translate }}</button>
+  <h1 class="page-title">{{ 'stock.form.title' | translate }}</h1>
 
   <form class="add-form" (ngSubmit)="saveProduct()">
-    <label class="field">
-      <span class="field-label">Nom *</span>
+    <div class="field">
       <input
         class="field-input"
         type="text"
         name="name"
+        [placeholder]="'stock.form.namePlaceholder' | translate"
+        [attr.aria-label]="'stock.form.namePlaceholder' | translate"
         [ngModel]="formName()"
         (ngModelChange)="formName.set($event)"
       />
-    </label>
+    </div>
 
-    <label class="field">
-      <span class="field-label">Marca</span>
+    <div class="field">
       <input
         class="field-input"
         type="text"
         name="brand"
+        [placeholder]="'stock.form.brandPlaceholder' | translate"
+        [attr.aria-label]="'stock.form.brandPlaceholder' | translate"
         [ngModel]="formBrand()"
         (ngModelChange)="formBrand.set($event)"
       />
-    </label>
+    </div>
 
     <button
       type="button"
@@ -34,9 +36,9 @@
       (click)="fileInput.click()"
     >
       @if (scanLoading()) {
-        Analitzant...
+        {{ 'stock.form.scanning' | translate }}
       } @else {
-        <lucide-icon [img]="CameraIcon" [size]="16" /> O puja una foto
+        <lucide-icon [img]="CameraIcon" [size]="16" /> {{ 'stock.form.scanBtn' | translate }}
       }
     </button>
     <input
@@ -48,10 +50,16 @@
     />
 
     @if (formError()) {
-      <p class="form-error">{{ formError() }}</p>
+      <p class="form-error">{{ formError() | translate }}</p>
     }
 
-    <button type="submit" class="save-btn" [disabled]="formLoading()">Desar</button>
+    <button type="submit" class="save-btn" [disabled]="formLoading()">
+      @if (formLoading()) {
+        {{ 'stock.form.saving' | translate }}
+      } @else {
+        {{ 'stock.form.save' | translate }}
+      }
+    </button>
   </form>
 } @else {
   <div class="wishlist-access">
@@ -60,8 +68,8 @@
 
   @if (inStockProducts().length === 0) {
     <div class="empty-state">
-      <h1 class="empty-title">El meu stock</h1>
-      <p class="empty-subtitle">Aquí van els teus productes, puja el primer 🌸</p>
+      <h1 class="empty-title">{{ 'stock.title' | translate }}</h1>
+      <p class="empty-subtitle">{{ 'stock.empty' | translate }} 🌸</p>
     </div>
   } @else {
     <h1 class="page-title">{{ 'stock.title' | translate }}</h1>
@@ -136,7 +144,7 @@
 
   @if (wishlistItems().length > 0) {
     <div class="wishlist-section">
-      <h2 class="wishlist-title">Llista de la compra</h2>
+      <h2 class="wishlist-title">{{ 'stock.wishlist.title' | translate }}</h2>
       @for (item of wishlistItems(); track item.id) {
         <div class="wishlist-item">
           <div class="wishlist-item-info">
@@ -149,7 +157,7 @@
             <button
               type="button"
               class="mini-btn wishlist"
-              aria-label="Tornar al stock"
+              [attr.aria-label]="'stock.wishlist.backToStock' | translate"
               (click)="addBackToStock(item)"
             >
               <lucide-icon [img]="PackagePlusIcon" [size]="14" />
@@ -183,14 +191,14 @@
         >
           ✕
         </button>
-        <h3 class="modal-title">{{ target.name }}</h3>
-        <p class="modal-text">Què vols fer amb aquest producte?</p>
+        <h3 class="modal-title">{{ 'stock.delete.title' | translate }}</h3>
+        <p class="modal-text">{{ 'stock.delete.message' | translate }}</p>
         <div class="modal-actions">
           <button type="button" class="modal-btn danger" (click)="confirmDelete()">
-            Esborrar definitivament
+            {{ 'stock.delete.confirm' | translate }}
           </button>
           <button type="button" class="modal-btn ghost" (click)="showDeleteModal.set(null)">
-            Cancel·lar
+            {{ 'stock.delete.cancel' | translate }}
           </button>
         </div>
       </div>
@@ -203,7 +211,8 @@
         <button type="button" class="modal-close" aria-label="Tancar" (click)="closeReview()">
           ✕
         </button>
-        <h3 class="modal-title">{{ target.name }}</h3>
+        <h3 class="modal-title">{{ 'stock.review.title' | translate }}</h3>
+        <p class="modal-text">{{ target.name }}</p>
 
         <div class="review-stars">
           @for (i of stars; track i) {
@@ -223,12 +232,14 @@
           class="review-notes"
           name="notes"
           rows="4"
-          placeholder="Notes..."
+          [placeholder]="'stock.review.placeholder' | translate"
           [ngModel]="reviewNotes()"
           (ngModelChange)="reviewNotes.set($event)"
         ></textarea>
 
-        <button type="button" class="save-btn" (click)="saveReview()">Desar</button>
+        <button type="button" class="save-btn" (click)="saveReview()">
+          {{ 'stock.review.save' | translate }}
+        </button>
       </div>
     </div>
   }
