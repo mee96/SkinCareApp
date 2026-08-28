@@ -17,6 +17,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:4200",                     # Angular en local
         "https://skincareapp-frontend.onrender.com",  # quan despleguis el front (canvia-ho pel real)
+        "https://skincareapp-5h8e.onrender.com",
     ],
     allow_credentials=True,
     allow_methods=["*"],
