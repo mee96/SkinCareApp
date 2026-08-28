@@ -132,6 +132,15 @@
       "missingFields": "Indica tu nombre y elige un tipo de piel para continuar."
     }
   },
+  "calendar": {
+    "loading": "Cargando el calendario...",
+    "addNote": "Añadir nota",
+    "exceptionTitle": "Nota del día",
+    "notePlaceholder": "Escribe una nota para este día...",
+    "save": "Guardar",
+    "editNote": "Editar nota",
+    "deleteNote": "Borrar nota"
+  },
   "stock": {
     "title": "Mi stock",
     "inStock": "En stock",

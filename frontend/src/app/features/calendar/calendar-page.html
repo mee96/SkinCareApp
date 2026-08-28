@@ -1,0 +1,117 @@
+@if (loading()) {
+  <p class="state-msg">{{ 'calendar.loading' | translate }}</p>
+} @else {
+  <div class="cal-header">
+    <button type="button" class="nav-btn" aria-label="Mes anterior" (click)="prevMonth()">
+      <lucide-icon [img]="ChevronLeftIcon" [size]="18" />
+    </button>
+    <h1 class="month-label">{{ monthLabel() }}</h1>
+    <button type="button" class="nav-btn" aria-label="Mes següent" (click)="nextMonth()">
+      <lucide-icon [img]="ChevronRightIcon" [size]="18" />
+    </button>
+  </div>
+
+  <div class="cal-grid">
+    <div class="dow">dl</div>
+    <div class="dow">dt</div>
+    <div class="dow">dc</div>
+    <div class="dow">dj</div>
+    <div class="dow">dv</div>
+    <div class="dow">ds</div>
+    <div class="dow">dg</div>
+
+    @for (blank of leadingBlankCells(); track blank) {
+      <div class="cell blank"></div>
+    }
+
+    @for (cell of cells(); track cell.date) {
+      <div
+        class="cell"
+        [class.empty]="!cell.type"
+        [class.type-R]="cell.type === 'R'"
+        [class.type-C]="cell.type === 'C'"
+        [class.type-H]="cell.type === 'H'"
+        [class.type-P]="cell.type === 'P'"
+        [class.has-exception]="cell.hasException"
+        [class.is-today]="cell.date === today"
+        (click)="openDay(cell.date)"
+      >
+        {{ cell.dayNumber }}
+      </div>
+    }
+  </div>
+}
+
+@if (showModal()) {
+  <div class="modal-backdrop" (click)="closeModal()">
+    <div class="modal-card" (click)="$event.stopPropagation()">
+      <button type="button" class="modal-close" aria-label="Tancar" (click)="closeModal()">✕</button>
+      <h3 class="modal-title">{{ selectedDate() }}</h3>
+
+      <div class="type-options">
+        @for (opt of typeOptions; track opt.code) {
+          <button
+            type="button"
+            class="type-btn"
+            [class]="opt.cssClass"
+            [class.active]="days().get(selectedDate()!) === opt.code"
+            (click)="assignType(opt.code)"
+          >
+            {{ opt.label | translate }}
+          </button>
+        }
+      </div>
+
+      <hr class="modal-divider" />
+
+      @if (exceptions().get(selectedDate()!); as exception) {
+        <div class="exception-view">
+          <p class="exception-note">{{ exception.note }}</p>
+          <div class="exception-actions">
+            <button
+              type="button"
+              class="icon-action"
+              [attr.aria-label]="'calendar.editNote' | translate"
+              (click)="openExceptionForm(selectedDate()!)"
+            >
+              <lucide-icon [img]="PencilIcon" [size]="16" />
+            </button>
+            <button
+              type="button"
+              class="icon-action danger"
+              [attr.aria-label]="'calendar.deleteNote' | translate"
+              (click)="deleteException(selectedDate()!)"
+            >
+              <lucide-icon [img]="Trash2Icon" [size]="16" />
+            </button>
+          </div>
+        </div>
+      } @else {
+        <button type="button" class="add-note-btn" (click)="openExceptionForm(selectedDate()!)">
+          {{ 'calendar.addNote' | translate }}
+        </button>
+      }
+    </div>
+  </div>
+}
+
+@if (showExceptionForm()) {
+  <div class="modal-backdrop" (click)="closeExceptionForm()">
+    <div class="modal-card" (click)="$event.stopPropagation()">
+      <button type="button" class="modal-close" aria-label="Tancar" (click)="closeExceptionForm()">✕</button>
+      <h3 class="modal-title">{{ 'calendar.exceptionTitle' | translate }}</h3>
+
+      <textarea
+        class="exception-textarea"
+        rows="4"
+        [placeholder]="'calendar.notePlaceholder' | translate"
+        [ngModel]="exceptionNote()"
+        (ngModelChange)="exceptionNote.set($event)"
+      ></textarea>
+
+      <button type="button" class="save-btn" (click)="saveException()">
+        {{ 'calendar.save' | translate }}
+      </button>
+    </div>
+  </div>
+}

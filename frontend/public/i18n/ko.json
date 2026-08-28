@@ -132,6 +132,15 @@
       "missingFields": "계속하려면 이름을 입력하고 피부 타입을 선택하세요."
     }
   },
+  "calendar": {
+    "loading": "캘린더를 불러오는 중...",
+    "addNote": "메모 추가",
+    "exceptionTitle": "일일 메모",
+    "notePlaceholder": "이 날의 메모를 작성하세요...",
+    "save": "저장",
+    "editNote": "메모 수정",
+    "deleteNote": "메모 삭제"
+  },
   "stock": {
     "title": "내 재고",
     "inStock": "재고 있음",

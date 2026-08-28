@@ -1,0 +1,284 @@
+.state-msg {
+  text-align: center;
+  color: var(--text-soft);
+  margin-top: 40px;
+}
+
+/* --- Capçalera --- */
+.cal-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 8px 0 16px;
+}
+
+.month-label {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  text-transform: capitalize;
+  min-width: 140px;
+  text-align: center;
+}
+
+.nav-btn {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--primary);
+  transition: background 0.2s, transform 0.15s;
+}
+.nav-btn:hover {
+  background: var(--pink-100);
+}
+.nav-btn:active {
+  transform: scale(0.92);
+}
+
+/* --- Graella --- */
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.dow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-soft);
+  text-align: center;
+  padding-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.cell {
+  aspect-ratio: 1;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.1s;
+}
+.cell:active {
+  transform: scale(0.94);
+}
+
+.cell.blank {
+  border: none;
+  background: transparent;
+  cursor: default;
+}
+.cell.empty {
+  background: var(--surface);
+}
+
+.cell.type-R {
+  background: var(--retinal);
+}
+.cell.type-C {
+  background: var(--contorn);
+}
+.cell.type-H {
+  background: var(--hidrata);
+}
+.cell.type-P {
+  background: var(--pegats);
+}
+
+.cell.has-exception {
+  outline: 2px solid var(--primary);
+  outline-offset: -2px;
+}
+.cell.has-exception::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+
+.cell.is-today {
+  box-shadow: inset 0 0 0 2px var(--primary);
+  font-weight: 800;
+  color: var(--primary);
+}
+
+/* --- Modals --- */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+.modal-card {
+  background: var(--surface);
+  border-radius: 20px;
+  padding: 20px;
+  width: 300px;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.modal-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+.modal-close {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-soft);
+  font-size: 1.2rem;
+  line-height: 1;
+  padding: 0;
+}
+.modal-divider {
+  border: none;
+  border-top: 1.5px solid var(--border);
+  margin: 4px 0;
+}
+
+/* --- Selector de tipus --- */
+.type-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.type-btn {
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1.5px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+  transition: 0.15s;
+}
+.type-btn.type-R.active {
+  background: var(--retinal);
+  border-color: var(--retinal);
+}
+.type-btn.type-C.active {
+  background: var(--contorn);
+  border-color: var(--contorn);
+}
+.type-btn.type-H.active {
+  background: var(--hidrata);
+  border-color: var(--hidrata);
+}
+.type-btn.type-P.active {
+  background: var(--pegats);
+  border-color: var(--pegats);
+}
+
+/* --- Excepció (nota del dia) --- */
+.exception-view {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+.exception-note {
+  font-size: 0.86rem;
+  color: var(--text);
+  margin: 0;
+  white-space: pre-wrap;
+  flex: 1;
+}
+.exception-actions {
+  display: flex;
+  gap: 6px;
+  flex: none;
+}
+.icon-action {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  color: var(--text-soft);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, color 0.2s;
+}
+.icon-action:active {
+  transform: scale(0.9);
+}
+.icon-action.danger {
+  color: var(--danger);
+  border-color: var(--danger);
+}
+
+.add-note-btn {
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 600;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1.5px dashed var(--primary);
+  background: color-mix(in srgb, var(--primary) 8%, var(--surface));
+  color: var(--primary);
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.exception-textarea {
+  width: 100%;
+  min-height: 80px;
+  font: inherit;
+  font-size: 0.84rem;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1.5px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  resize: vertical;
+  box-sizing: border-box;
+}
+.exception-textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.save-btn {
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: none;
+  background: var(--primary);
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.save-btn:active {
+  transform: scale(0.98);
+}

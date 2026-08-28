@@ -132,6 +132,15 @@
     "missingFields": "Posa el teu nom i tria el tipus de pell per continuar."
   }
 },
+"calendar": {
+  "loading": "Carregant el calendari...",
+  "addNote": "Afegir nota",
+  "exceptionTitle": "Nota del dia",
+  "notePlaceholder": "Escriu una nota per aquest dia...",
+  "save": "Desar",
+  "editNote": "Editar nota",
+  "deleteNote": "Esborrar nota"
+},
 "stock": {
   "title": "El meu stock",
   "inStock": "En stock",

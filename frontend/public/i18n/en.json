@@ -132,6 +132,15 @@
       "missingFields": "Enter your name and choose a skin type to continue."
     }
   },
+  "calendar": {
+    "loading": "Loading calendar...",
+    "addNote": "Add note",
+    "exceptionTitle": "Day note",
+    "notePlaceholder": "Write a note for this day...",
+    "save": "Save",
+    "editNote": "Edit note",
+    "deleteNote": "Delete note"
+  },
   "stock": {
     "title": "My stock",
     "inStock": "In stock",

@@ -13,7 +13,7 @@ export const routes: Routes = [
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'avui' },
       { path: 'avui', loadComponent: () => import('./features/today/today-page').then(m => m.TodayPage) },
-      { path: 'calendari', redirectTo: 'stock' },
+      { path: 'calendari', loadComponent: () => import('./features/calendar/calendar-page').then(m => m.CalendarPage) },
       { path: 'stock', loadComponent: () => import('./features/stock/stock-page').then(m => m.StockPage) },
       { path: 'perfil', loadComponent: () => import('./features/profile/profile-page').then(m => m.ProfilePage) },
       { path: 'aprendre', loadComponent: () => import('./features/learn/learn-page').then(m => m.LearnPage) },
