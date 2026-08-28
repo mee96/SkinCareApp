@@ -6,7 +6,7 @@ client = Groq(api_key=settings.GROQ_API_KEY)
 def scan_product_image(image_base64: str, media_type: str = "image/jpeg") -> dict:
     """Envia una imatge a Groq i retorna nom, marca i slot del producte."""
     response = client.chat.completions.create(
-        model="meta-llama/llama-4-scout-17b-16e-instruct",
+        model="meta-llama/llama-4-maverick-17b-128e-instruct",
         messages=[
             {
                 "role": "user",
@@ -46,7 +46,7 @@ If you cannot identify the product, return {"name": null, "brand": null, "slot_i
 def classify_product(name: str, brand: str | None) -> dict:
     """Classifica un producte al seu slot de rutina a partir del nom i la marca."""
     response = client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
+        model="moonshotai/kimi-k2-instruct",
         messages=[
             {
                 "role": "user",
@@ -90,7 +90,7 @@ def check_ingredients(
     skin_text = skin_type or "no especificat"
     
     response = client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
+        model="moonshotai/kimi-k2-instruct",
         messages=[
             {
                 "role": "user",
