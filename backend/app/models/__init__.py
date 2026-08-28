@@ -9,6 +9,7 @@ from app.models.step_log import StepLog
 from app.models.ingredient import Ingredient
 from app.models.wishlist import Wishlist
 from app.models.product_review import ProductReview
+from app.models.day_exception import DayException
 
 __all__ = [
     "User",
@@ -22,4 +23,5 @@ __all__ = [
     "Ingredient",
     "Wishlist",
     "ProductReview",
+    "DayException",
 ]
