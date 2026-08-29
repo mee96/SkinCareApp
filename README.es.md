@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=f4b8d4&height=180&section=header&text=✦%20SKINCARE%20APP%20✦&fontColor=2d1b6e&fontSize=34&desc=tu%20rutina%20personal%20de%20K-beauty&descSize=16&descColor=2d1b6e&descAlignY=65&fontAlignY=42" width="100%" alt="SkinCareApp" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=f4b8d4&height=180&section=header&text=✦%20SkinCareApp%20✦&fontColor=2d1b6e&fontSize=34&desc=tu%20tracker%20personal%20de%20rutina%20de%20skincare&descSize=16&descColor=2d1b6e&descAlignY=65&fontAlignY=42" width="100%" alt="SkinCareApp" />
 
 <br/>
 
@@ -196,8 +196,6 @@ Hecha porque no recordaba qué productos tenía, compraba duplicados y no sabía
 
 Desarrollado por **Carme Medina Canalda**<br/>
 *Full Stack Developer · Barcelona*
-
-*"Si la arquitectura es correcta, todo encajará"*
 
 <br/>
 

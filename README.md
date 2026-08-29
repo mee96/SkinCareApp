@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=f4b8d4&height=180&section=header&text=✦%20SKINCARE%20APP%20✦&fontColor=2d1b6e&fontSize=34&desc=your%20personal%20K-beauty%20routine%20tracker&descSize=16&descColor=2d1b6e&descAlignY=65&fontAlignY=42" width="100%" alt="SkinCareApp" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=f4b8d4&height=180&section=header&text=✦%20SkinCareApp%20✦&fontColor=2d1b6e&fontSize=34&desc=your%20personal%20skincare%20routine%20tracker&descSize=16&descColor=2d1b6e&descAlignY=65&fontAlignY=42" width="100%" alt="SkinCareApp" />
 
 <br/>
 
@@ -196,8 +196,6 @@ Built because I kept forgetting which products I owned, bought duplicates, and h
 
 Developed by **Carme Medina Canalda**<br/>
 *Full Stack Developer · Barcelona*
-
-*"If the architecture is right, everything will fit"*
 
 <br/>
 
