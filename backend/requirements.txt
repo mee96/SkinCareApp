@@ -1,9 +1,11 @@
-fastapi
-uvicorn[standard]
-sqlalchemy
-pymysql
+fastapi==0.141.1
+uvicorn[standard]==0.52.4
+sqlalchemy==2.0.52
+pymysql==1.2.0
 cryptography
 python-dotenv
-pydantic-settings
+pydantic==2.13.5
+pydantic-settings==2.15.0
 email-validator
-groq
+groq==1.7.0
+httpx==0.28.1
