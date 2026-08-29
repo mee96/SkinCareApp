@@ -1,11 +1,19 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=f4b8d4&height=180&section=header&text=✦%20SKINCARE%20APP%20✦&fontColor=2d1b6e&fontSize=34&desc=your%20personal%20korean%20skincare%20routine%20tracker&descSize=16&descColor=2d1b6e&descAlignY=65&fontAlignY=42" width="100%" alt="SkinCareApp" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=f4b8d4&height=180&section=header&text=✦%20SKINCARE%20APP%20✦&fontColor=2d1b6e&fontSize=34&desc=your%20personal%20K-beauty%20routine%20tracker&descSize=16&descColor=2d1b6e&descAlignY=65&fontAlignY=42" width="100%" alt="SkinCareApp" />
 
 <br/>
 
+<div align="center">
+<a href="https://github.com/mee96/SkinCareApp/blob/main/README.md"><img src="https://img.shields.io/badge/English-1b2e4b?style=flat-square" alt="English"></a>
+<a href="https://github.com/mee96/SkinCareApp/blob/main/README.es.md"><img src="https://img.shields.io/badge/Espa%C3%B1ol-a8c4f0?style=flat-square&logoColor=1b2e4b" alt="Español"></a>
+<a href="https://github.com/mee96/SkinCareApp/blob/main/README.ca.md"><img src="https://img.shields.io/badge/Català-f4b8d4?style=flat-square&logoColor=2d1b6e" alt="Català"></a>
+</div>
+
+<br/>
+
+![Python](https://img.shields.io/badge/Python-FastAPI-c5b9f0?style=for-the-badge&logo=python&logoColor=2d1b6e)
 ![Angular](https://img.shields.io/badge/Angular-21-a8c4f0?style=for-the-badge&logo=angular&logoColor=2d1b6e)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.115-f4b8d4?style=for-the-badge&logo=fastapi&logoColor=2d1b6e)
 ![MySQL](https://img.shields.io/badge/MySQL-Aiven-b8e8d4?style=for-the-badge&logo=mysql&logoColor=2d1b6e)
 ![Firebase](https://img.shields.io/badge/Firebase-Auth-f0e4a0?style=for-the-badge&logo=firebase&logoColor=2d1b6e)
 ![Groq](https://img.shields.io/badge/Groq-AI-c5b9f0?style=for-the-badge&logo=lightning&logoColor=2d1b6e)
@@ -17,6 +25,7 @@
 [![API Docs](https://img.shields.io/badge/📖_API_Docs-b8e8d4?style=flat-square&logoColor=2d1b6e)](https://skincareapp-api.onrender.com/docs)
 &nbsp;
 [![Issues](https://img.shields.io/badge/🐛_Issues-a8c4f0?style=flat-square&logoColor=2d1b6e)](https://github.com/mee96/SkinCareApp/issues)
+[![Keep Alive Active](https://img.shields.io/badge/Keep--Alive-Active-b8e8d4?style=flat-square&logo=githubactions&logoColor=2d1b6e)](https://github.com/mee96/keep-alive)
 
 </div>
 
@@ -26,7 +35,7 @@
 
 ## <img src="https://api.iconify.design/ph/question-fill.svg?color=%23FF6FA8&height=24" height="22"> &nbsp;What is this?
 
-**SkinCareApp** is a full-stack project to organize and follow a personal **Korean skincare routine**: what to apply each day, which products you have in stock, what you'd like to buy next, and how each product worked out for you.
+**SkinCareApp** is a full-stack project to organize and follow a personal **K-beauty skincare routine**: what to apply each day, which products you have in stock, what you'd like to buy next, and how each product worked out for you.
 
 Built as a **monorepo** combining an **Angular** frontend (standalone components, signals, `OnPush`) with a **FastAPI** backend, a **MySQL** database on Aiven Cloud, **Firebase** authentication, and **Groq AI** for product recognition and routine assistance.
 
@@ -44,7 +53,7 @@ Built as a **monorepo** combining an **Angular** frontend (standalone components
 | <img src="https://api.iconify.design/ph/key-fill.svg?color=%232FB5AE&height=18" height="16"> **Auth** | Firebase Authentication (Email + Google) |
 | <img src="https://api.iconify.design/ph/sparkle-fill.svg?color=%23E0A63B&height=18" height="16"> **AI** | Groq (product scan, classification, ingredient check) |
 | <img src="https://api.iconify.design/ph/translate-fill.svg?color=%23FF6FA8&height=18" height="16"> **i18n** | ngx-translate · CA / ES / EN / 한국어 |
-| <img src="https://api.iconify.design/ph/rocket-launch-fill.svg?color=%23E0A63B&height=18" height="16"> **Deploy** | Render (Frontend + Backend) |
+| <img src="https://api.iconify.design/ph/rocket-launch-fill.svg?color=%23E0A63B&height=18" height="16"> **Deploy** | Render (Frontend + Backend) · Keep-Alive against cold starts |
 
 <br/>
 
@@ -134,7 +143,8 @@ GET    /catalog/ingredients → Ingredient info</code></pre>
 pip install -r requirements.txt
 cp .env.example .env    # Fill in the credentials
 uvicorn app.main:app --reload</code></pre>
-
+> ⚡ **Availability:** The backend stays active without *cold starts* thanks to an automatic ping from [Keep-Alive](https://github.com/mee96/keep-alive).
+>
 ### Frontend
 <pre><code>cd frontend
 npm install
@@ -172,6 +182,7 @@ GROQ_API_KEY=...</code></pre>
 * <img src="https://api.iconify.design/ph/book-open-fill.svg?color=%235B9BD5&height=18" height="16"> **Learn:** 4 educational articles, available in 4 languages.
 * <img src="https://api.iconify.design/ph/user-circle-fill.svg?color=%23FF6FA8&height=18" height="16"> **Profile:** Skin type, concerns, logout.
 * <img src="https://api.iconify.design/ph/translate-fill.svg?color=%23E0A63B&height=18" height="16"> **Full i18n:** Catalan, Spanish, English, and 한국어.
+* <img src="https://api.iconify.design/ph/lightning-fill.svg?color=%23B372CF&height=18" height="16"> **Keep-Alive:** Automatic ping system to avoid Render cold starts.
 
 <br/>
 
@@ -190,6 +201,7 @@ Developed by **Carme Medina Canalda**<br/>
 
 <br/>
 
-[![GitHub](https://img.shields.io/badge/GitHub-a8c4f0?style=flat-square&logo=github&logoColor=2d1b6e)](https://github.com/mee96)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-a8c4f0?style=flat-square&logo=linkedin&logoColor=2d1b6e)](https://www.linkedin.com/in/carme-medina-canalda-250457132/)
+[![GitHub](https://img.shields.io/badge/GitHub-c5b9f0?style=flat-square&logo=github&logoColor=2d1b6e)](https://github.com/mee96)
 
 </div>
