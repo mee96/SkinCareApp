@@ -190,7 +190,7 @@ GROQ_API_KEY=...</code></pre>
 
 <div align="center">
 
-<b>hecho con 🌸 por amor a los 🌸</b>
+Hecha porque no recordaba qué productos tenía, compraba duplicados y no sabía en qué orden aplicarlos. Si tú también eres un desastre con el skincare — esta app es para ti. 🌸
 
 <br/><br/>
 
