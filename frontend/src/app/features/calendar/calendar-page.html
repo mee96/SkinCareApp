@@ -12,13 +12,9 @@
   </div>
 
   <div class="cal-grid">
-    <div class="dow">{{ 'calendar.weekdays.0' | translate }}</div>
-    <div class="dow">{{ 'calendar.weekdays.1' | translate }}</div>
-    <div class="dow">{{ 'calendar.weekdays.2' | translate }}</div>
-    <div class="dow">{{ 'calendar.weekdays.3' | translate }}</div>
-    <div class="dow">{{ 'calendar.weekdays.4' | translate }}</div>
-    <div class="dow">{{ 'calendar.weekdays.5' | translate }}</div>
-    <div class="dow">{{ 'calendar.weekdays.6' | translate }}</div>
+    @for (day of weekdayKeys; track day) {
+      <div class="dow">{{ day | translate }}</div>
+    }
 
     @for (blank of leadingBlankCells(); track blank) {
       <div class="cell blank"></div>

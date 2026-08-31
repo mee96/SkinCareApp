@@ -82,6 +82,16 @@ export class CalendarPage implements OnInit {
     { code: 'P', label: 'today.types.P', cssClass: 'type-P' },
   ];
 
+  readonly weekdayKeys = [
+    'calendar.weekdays.0',
+    'calendar.weekdays.1',
+    'calendar.weekdays.2',
+    'calendar.weekdays.3',
+    'calendar.weekdays.4',
+    'calendar.weekdays.5',
+    'calendar.weekdays.6',
+  ];
+
   ngOnInit(): void {
     this.loadMonth();
   }
