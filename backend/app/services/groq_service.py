@@ -52,7 +52,7 @@ If you cannot identify the product, return {"name": null, "brand": null, "slot_i
 def classify_product(name: str, brand: str | None) -> dict:
     """Classifica un producte al seu slot de rutina a partir del nom i la marca."""
     response = get_groq_client().chat.completions.create(
-        model="moonshotai/kimi-k2-instruct",
+        model="llama-3.1-8b-instant",
         messages=[
             {
                 "role": "user",
