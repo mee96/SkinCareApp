@@ -134,12 +134,20 @@
   },
   "calendar": {
     "loading": "Loading calendar...",
-    "addNote": "Add note",
-    "exceptionTitle": "Day note",
-    "notePlaceholder": "Write a note for this day...",
-    "save": "Save",
+    "months": ["January","February","March","April","May","June","July","August","September","October","November","December"],
+    "weekdays": ["Mo","Tu","We","Th","Fr","Sa","Su"],
+    "types": {
+      "R": "Retinal",
+      "C": "Eye contour",
+      "H": "Hydration",
+      "P": "Patches"
+    },
+    "addNote": "Add a note for this day",
     "editNote": "Edit note",
-    "deleteNote": "Delete note"
+    "deleteNote": "Delete note",
+    "saveNote": "Save",
+    "notePlaceholder": "Write a note for this day...",
+    "cancel": "Cancel"
   },
   "stock": {
     "title": "My stock",

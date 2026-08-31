@@ -134,12 +134,20 @@
   },
   "calendar": {
     "loading": "캘린더를 불러오는 중...",
-    "addNote": "메모 추가",
-    "exceptionTitle": "일일 메모",
-    "notePlaceholder": "이 날의 메모를 작성하세요...",
-    "save": "저장",
+    "months": ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
+    "weekdays": ["월","화","수","목","금","토","일"],
+    "types": {
+      "R": "레티날",
+      "C": "아이크림",
+      "H": "수분",
+      "P": "패치"
+    },
+    "addNote": "이 날의 메모 추가",
     "editNote": "메모 수정",
-    "deleteNote": "메모 삭제"
+    "deleteNote": "메모 삭제",
+    "saveNote": "저장",
+    "notePlaceholder": "이 날의 메모를 작성하세요...",
+    "cancel": "취소"
   },
   "stock": {
     "title": "내 재고",

@@ -134,12 +134,20 @@
   },
   "calendar": {
     "loading": "Cargando el calendario...",
-    "addNote": "Añadir nota",
-    "exceptionTitle": "Nota del día",
-    "notePlaceholder": "Escribe una nota para este día...",
-    "save": "Guardar",
+    "months": ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],
+    "weekdays": ["Lu","Ma","Mi","Ju","Vi","Sa","Do"],
+    "types": {
+      "R": "Retinal",
+      "C": "Contorno",
+      "H": "Hidratación",
+      "P": "Parches"
+    },
+    "addNote": "Añadir nota para este día",
     "editNote": "Editar nota",
-    "deleteNote": "Borrar nota"
+    "deleteNote": "Borrar nota",
+    "saveNote": "Guardar",
+    "notePlaceholder": "Escribe una nota para este día...",
+    "cancel": "Cancelar"
   },
   "stock": {
     "title": "Mi stock",

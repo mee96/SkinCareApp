@@ -134,12 +134,20 @@
 },
 "calendar": {
   "loading": "Carregant el calendari...",
-  "addNote": "Afegir nota",
-  "exceptionTitle": "Nota del dia",
-  "notePlaceholder": "Escriu una nota per aquest dia...",
-  "save": "Desar",
+  "months": ["Gener","Febrer","Març","Abril","Maig","Juny","Juliol","Agost","Setembre","Octubre","Novembre","Desembre"],
+  "weekdays": ["dl","dt","dc","dj","dv","ds","dg"],
+  "types": {
+    "R": "Retinal",
+    "C": "Contorn",
+    "H": "Hidratació",
+    "P": "Pegats"
+  },
+  "addNote": "Afegir nota per a aquest dia",
   "editNote": "Editar nota",
-  "deleteNote": "Esborrar nota"
+  "deleteNote": "Esborrar nota",
+  "saveNote": "Desar",
+  "notePlaceholder": "Escriu una nota per a aquest dia...",
+  "cancel": "Cancel·lar"
 },
 "stock": {
   "title": "El meu stock",

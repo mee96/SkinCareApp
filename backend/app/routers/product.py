@@ -74,8 +74,6 @@ def classify(payload: ClassifyProductRequest):
         result = classify_product(payload.name, payload.brand)
         return result
     except Exception as e:
-        import traceback
-        print("CLASSIFY ERROR:", traceback.format_exc())
         raise HTTPException(status_code=500, detail=f"Error classificant: {str(e)}")
 
 @router.post("/check-ingredients")

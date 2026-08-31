@@ -16,21 +16,6 @@ interface CalendarCell {
   hasException: boolean;
 }
 
-const MONTH_NAMES = [
-  'Gener',
-  'Febrer',
-  'Març',
-  'Abril',
-  'Maig',
-  'Juny',
-  'Juliol',
-  'Agost',
-  'Setembre',
-  'Octubre',
-  'Novembre',
-  'Desembre',
-];
-
 @Component({
   selector: 'app-calendar-page',
   standalone: true,
@@ -60,7 +45,7 @@ export class CalendarPage implements OnInit {
   readonly showExceptionForm = signal<string | null>(null);
   readonly exceptionNote = signal('');
 
-  readonly monthLabel = computed(() => `${MONTH_NAMES[this.viewMonth()]} ${this.viewYear()}`);
+  readonly monthKey = computed(() => `calendar.months.${this.viewMonth()}`);
 
   readonly cells = computed<CalendarCell[]>(() => {
     const year = this.viewYear();
