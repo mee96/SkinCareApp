@@ -22,7 +22,7 @@
           { "label": "Double cleansing (night only)", "value": "first an oil cleanser to dissolve makeup and SPF, then a water-based cleanser for a deeper clean." },
           { "label": "Toner", "value": "preps the skin and gives it the first layer of hydration." },
           { "label": "Essence / serum", "value": "the treatment step, with the most concentrated actives." },
-          { "label": "Eye cream", "value": "the thinner skin around the eyes needs specific care." },
+          { "label": "Eye contour", "value": "the thinner skin around the eyes needs specific care." },
           { "label": "Moisturizer", "value": "seals in everything you've applied before." },
           { "label": "SPF (morning only)", "value": "the last and most important step of the day." }
         ]
@@ -48,7 +48,7 @@
           "It should be used <strong>every day</strong>, even if you stay home or the sky is cloudy — UVA rays pass through clouds and glass.",
           "<strong>Reapply it</strong> if you spend many hours in direct sun; a single morning application doesn't last all day under intense exposure."
         ],
-        "warning": "If you use retinoids (retinal, retinol), photosensitivity increases. SPF stops being optional."
+        "warning": "If you use retinoids (retinal, retinol), photosensitivity increases. SPF is no longer optional."
       }
     }
   },
@@ -161,7 +161,7 @@
       "title": "You're missing essential products:",
       "missing": "You have no product in stock for: "
     },
-    "empty": "Here go your products, upload the first one",
+    "empty": "Your products will show up here — add the first one",
     "form": {
       "title": "Add product",
       "back": "Back",

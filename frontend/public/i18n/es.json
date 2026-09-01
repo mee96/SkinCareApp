@@ -28,7 +28,7 @@
         ]
       },
       "ingredientsByConcern": {
-        "title": "Qué ingredientes para cada preocupación",
+        "title": "Qué ingredientes usar para cada preocupación",
         "summary": "Niacinamida, retinal, vitamina C... qué sirve para qué.",
         "groups": [
           { "label": "Granos / acné", "value": "Niacinamida, BHA (ácido salicílico), ácido azelaico. Evita aceites comedogénicos." },
@@ -70,7 +70,7 @@
       "water-cleanser": "Limpiador acuoso",
       "toner": "Tónico",
       "essence": "Esencia",
-      "treatment-serum": "Sérum tratamiento",
+      "treatment-serum": "Sérum de tratamiento",
       "retinoid": "Retinoide",
       "eye": "Contorno de ojos",
       "moisturizer": "Hidratante",
@@ -144,7 +144,7 @@
     },
     "addNote": "Añadir nota para este día",
     "editNote": "Editar nota",
-    "deleteNote": "Borrar nota",
+    "deleteNote": "Eliminar nota",
     "saveNote": "Guardar",
     "notePlaceholder": "Escribe una nota para este día...",
     "cancel": "Cancelar",
