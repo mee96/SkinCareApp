@@ -147,7 +147,9 @@
   "deleteNote": "Esborrar nota",
   "saveNote": "Desar",
   "notePlaceholder": "Escriu una nota per a aquest dia...",
-  "cancel": "Cancel·lar"
+  "cancel": "Cancel·lar",
+  "currentRoutine": "Rutina actual",
+  "noRoutine": "Sense rutina assignada"
 },
 "stock": {
   "title": "El meu stock",

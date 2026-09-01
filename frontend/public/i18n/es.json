@@ -147,7 +147,9 @@
     "deleteNote": "Borrar nota",
     "saveNote": "Guardar",
     "notePlaceholder": "Escribe una nota para este día...",
-    "cancel": "Cancelar"
+    "cancel": "Cancelar",
+    "currentRoutine": "Rutina actual",
+    "noRoutine": "Sin rutina asignada"
   },
   "stock": {
     "title": "Mi stock",

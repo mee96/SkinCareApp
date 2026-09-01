@@ -161,6 +161,29 @@
   margin: 4px 0;
 }
 
+/* --- Rutina actual del dia seleccionat --- */
+.current-routine {
+  font-size: 0.86rem;
+  font-weight: 700;
+  margin: 0;
+}
+.current-routine.type-R {
+  color: #5f50a8;
+}
+.current-routine.type-C {
+  color: #3f8d6a;
+}
+.current-routine.type-H {
+  color: #b87635;
+}
+.current-routine.type-P {
+  color: #c2557e;
+}
+.current-routine.none {
+  color: var(--text-soft);
+  font-weight: 600;
+}
+
 /* --- Selector de tipus --- */
 .type-options {
   display: flex;
@@ -240,13 +263,15 @@
   font: inherit;
   font-size: 0.84rem;
   font-weight: 600;
+  width: 100%;
   padding: 10px;
   border-radius: 12px;
-  border: 1.5px dashed var(--primary);
+  border: 1.5px solid var(--primary);
   background: color-mix(in srgb, var(--primary) 8%, var(--surface));
   color: var(--primary);
   cursor: pointer;
   transition: 0.15s;
+  box-sizing: border-box;
 }
 
 .exception-textarea {

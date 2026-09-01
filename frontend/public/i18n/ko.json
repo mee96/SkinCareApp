@@ -147,7 +147,9 @@
     "deleteNote": "메모 삭제",
     "saveNote": "저장",
     "notePlaceholder": "이 날의 메모를 작성하세요...",
-    "cancel": "취소"
+    "cancel": "취소",
+    "currentRoutine": "현재 루틴",
+    "noRoutine": "루틴 없음"
   },
   "stock": {
     "title": "내 재고",

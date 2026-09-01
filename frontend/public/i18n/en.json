@@ -147,7 +147,9 @@
     "deleteNote": "Delete note",
     "saveNote": "Save",
     "notePlaceholder": "Write a note for this day...",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "currentRoutine": "Current routine",
+    "noRoutine": "No routine assigned"
   },
   "stock": {
     "title": "My stock",

@@ -42,7 +42,15 @@
   <div class="modal-backdrop" (click)="closeModal()">
     <div class="modal-card" (click)="$event.stopPropagation()">
       <button type="button" class="modal-close" aria-label="Tancar" (click)="closeModal()">✕</button>
-      <h3 class="modal-title">{{ selectedDate() }}</h3>
+      <h3 class="modal-title">{{ formatSelectedDate() }}</h3>
+
+      @if (days().get(selectedDate()!); as currentType) {
+        <p class="current-routine" [class.type-R]="currentType === 'R'" [class.type-C]="currentType === 'C'" [class.type-H]="currentType === 'H'" [class.type-P]="currentType === 'P'">
+          {{ 'calendar.currentRoutine' | translate }}: {{ ('today.types.' + currentType) | translate }}
+        </p>
+      } @else {
+        <p class="current-routine none">{{ 'calendar.noRoutine' | translate }}</p>
+      }
 
       <div class="type-options">
         @for (opt of typeOptions; track opt.code) {

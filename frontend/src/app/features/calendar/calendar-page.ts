@@ -157,6 +157,18 @@ export class CalendarPage implements OnInit {
     this.selectedDate.set(date);
   }
 
+  formatSelectedDate(): string {
+    if (!this.selectedDate()) return '';
+    const date = new Date(this.selectedDate()! + 'T00:00:00');
+    const formatted = date.toLocaleDateString('ca-ES', {
+      weekday: 'long',
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    });
+    return formatted.charAt(0).toUpperCase() + formatted.slice(1);
+  }
+
   closeModal(): void {
     this.selectedDate.set(null);
   }
