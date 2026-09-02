@@ -12,7 +12,7 @@ def get_groq_client() -> Groq:
 def scan_product_image(image_base64: str, media_type: str = "image/jpeg") -> dict:
     """Envia una imatge a Groq i retorna nom, marca i slot del producte."""
     response = get_groq_client().chat.completions.create(
-        model="meta-llama/llama-4-maverick-17b-128e-instruct",
+        model="qwen/qwen3.8-27b",
         messages=[
             {
                 "role": "user",
