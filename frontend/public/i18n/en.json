@@ -132,6 +132,12 @@
       "missingFields": "Enter your name and choose a skin type to continue."
     }
   },
+  "chat": {
+    "title": "Skincare advisor",
+    "placeholder": "Ask me about skincare...",
+    "welcome": "Hi! I'm your skincare advisor 🌸 Ask me anything about your routine, products or ingredients.",
+    "thinking": "Typing..."
+  },
   "calendar": {
     "loading": "Loading calendar...",
     "months": ["January","February","March","April","May","June","July","August","September","October","November","December"],

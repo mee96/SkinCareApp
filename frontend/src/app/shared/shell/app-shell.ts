@@ -3,12 +3,13 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { LucideAngularModule, Sun, Moon, User } from 'lucide-angular';
 import { TranslatePipe } from '@ngx-translate/core';
 import { LanguageSwitcher } from '../ui/language-switcher';
+import { SkincareChat } from '../ui/skincare-chat';
 
 @Component({
   selector: 'app-shell',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, LucideAngularModule, LanguageSwitcher, TranslatePipe],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, LucideAngularModule, LanguageSwitcher, SkincareChat, TranslatePipe],
   templateUrl: './app-shell.html',
   styleUrls: ['../ui/icon-btn.css', './app-shell.css'],
 })

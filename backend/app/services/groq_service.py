@@ -122,3 +122,33 @@ Preocupacions: {concerns_text}"""
         if raw.startswith("json"):
             raw = raw[4:]
     return json.loads(raw.strip())
+
+
+def skincare_chat(
+    message: str,
+    history: list[dict],
+    skin_type: str | None,
+    concerns: list[str],
+    products: list[str],
+) -> str:
+    """Genera la resposta de l'assessora de skincare IA, amb el perfil de l'usuària com a context."""
+    system_prompt = (
+        "Ets una experta en skincare coreà. "
+        f"El perfil de l'usuària és: tipus de pell {skin_type or 'no especificat'}, "
+        f"preocupacions {', '.join(concerns) if concerns else 'cap'}, "
+        f"productes en stock {', '.join(products) if products else 'cap'}. "
+        "Respon sempre en l'idioma en què et parlen. Sigues concisa, amable i professional. "
+        "Mai recomanis productes específics de marca. Si no saps alguna cosa, digues-ho."
+    )
+
+    messages = [{"role": "system", "content": system_prompt}]
+    messages.extend(history)
+    messages.append({"role": "user", "content": message})
+
+    response = get_groq_client().chat.completions.create(
+        model="groq/compound",
+        messages=messages,
+        max_tokens=500,
+    )
+
+    return response.choices[0].message.content.strip()

@@ -132,6 +132,12 @@
     "missingFields": "Posa el teu nom i tria el tipus de pell per continuar."
   }
 },
+"chat": {
+  "title": "Assessora de skincare",
+  "placeholder": "Pregunta'm sobre skincare...",
+  "welcome": "Hola! Sóc la teva assessora de skincare 🌸 Pregunta'm el que vulguis sobre la teva rutina, productes o ingredients.",
+  "thinking": "Escrivint..."
+},
 "calendar": {
   "loading": "Carregant el calendari...",
   "months": ["Gener","Febrer","Març","Abril","Maig","Juny","Juliol","Agost","Setembre","Octubre","Novembre","Desembre"],

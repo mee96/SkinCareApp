@@ -132,6 +132,12 @@
       "missingFields": "Indica tu nombre y elige un tipo de piel para continuar."
     }
   },
+  "chat": {
+    "title": "Asesora de skincare",
+    "placeholder": "Pregúntame sobre skincare...",
+    "welcome": "¡Hola! Soy tu asesora de skincare 🌸 Pregúntame lo que quieras sobre tu rutina, productos o ingredientes.",
+    "thinking": "Escribiendo..."
+  },
   "calendar": {
     "loading": "Cargando el calendario...",
     "months": ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],
