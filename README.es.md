@@ -51,8 +51,9 @@ Construido como un **monorepo** que combina un frontend en **Angular** (componen
 | <img src="https://api.iconify.design/ph/cpu-fill.svg?color=%23B372CF&height=18" height="16"> **Backend** | FastAPI · Python · SQLAlchemy |
 | <img src="https://api.iconify.design/ph/database-fill.svg?color=%235B9BD5&height=18" height="16"> **Base de datos** | MySQL · Aiven Cloud |
 | <img src="https://api.iconify.design/ph/key-fill.svg?color=%232FB5AE&height=18" height="16"> **Autenticación** | Firebase Authentication (Email + Google) |
-| <img src="https://api.iconify.design/ph/sparkle-fill.svg?color=%23E0A63B&height=18" height="16"> **IA** | Groq (escaneo de productos, clasificación, análisis de ingredientes) |
+| <img src="https://api.iconify.design/ph/sparkle-fill.svg?color=%23E0A63B&height=18" height="16"> **IA** | Groq (escaneo de productos, clasificación, análisis de ingredientes, chat asesor de skincare) |
 | <img src="https://api.iconify.design/ph/translate-fill.svg?color=%23FF6FA8&height=18" height="16"> **i18n** | ngx-translate · CA / ES / EN / 한국어 |
+| <img src="https://api.iconify.design/ph/device-mobile-fill.svg?color=%232FB5AE&height=18" height="16"> **PWA** | Instalable, funciona offline gracias al Service Worker de Angular |
 | <img src="https://api.iconify.design/ph/rocket-launch-fill.svg?color=%23E0A63B&height=18" height="16"> **Deploy** | Render (Frontend + Backend) · Keep-Alive contra cold starts |
 
 <br/>
@@ -93,6 +94,9 @@ GET    /catalog/slots      → Slots de la rutina
 GET    /catalog/types      → Tipos de rutina (R/C/H/P)
 GET    /catalog/ingredients → Información de ingredientes</code></pre>
 
+### <img src="https://api.iconify.design/ph/chat-circle-dots-fill.svg?color=%23FF6FA8&height=20" height="18"> Asistente IA
+<pre><code>POST   /chat/skincare      → Chatea con la asesora de skincare IA (con tu tipo de piel, preocupaciones y stock)</code></pre>
+
 <br/>
 
 ---
@@ -112,7 +116,8 @@ GET    /catalog/ingredients → Información de ingredientes</code></pre>
 │       │   ├── wishlist.py
 │       │   ├── product_review.py
 │       │   ├── user.py
-│       │   └── catalog.py
+│       │   ├── catalog.py
+│       │   └── chat.py          → Chat asesor de skincare IA
 │       ├── services/
 │       │   └── groq_service.py  → Integración con IA
 │       └── core/
@@ -130,7 +135,7 @@ GET    /catalog/ingredients → Información de ingredientes</code></pre>
         │   ├── services/
         │   ├── stores/     → AuthStore (signals)
         │   └── guards/
-        └── shared/</code></pre>
+        └── shared/         → Shell, UI compartida (incl. widget de chat IA)</code></pre>
 
 <br/>
 
@@ -182,6 +187,8 @@ GROQ_API_KEY=...</code></pre>
 * <img src="https://api.iconify.design/ph/book-open-fill.svg?color=%235B9BD5&height=18" height="16"> **Aprender:** 4 artículos educativos, disponibles en 4 idiomas.
 * <img src="https://api.iconify.design/ph/user-circle-fill.svg?color=%23FF6FA8&height=18" height="16"> **Perfil:** Tipo de piel, preocupaciones, logout.
 * <img src="https://api.iconify.design/ph/translate-fill.svg?color=%23E0A63B&height=18" height="16"> **i18n completo:** Catalán, castellano, inglés y 한국어.
+* <img src="https://api.iconify.design/ph/chat-circle-dots-fill.svg?color=%23FF6FA8&height=18" height="16"> **Chat IA de skincare:** Pregunta a la asesora Groq sobre tu rutina, productos o ingredientes — conoce tu perfil de piel.
+* <img src="https://api.iconify.design/ph/device-mobile-fill.svg?color=%232FB5AE&height=18" height="16"> **PWA instalable:** Añade SkinCareApp a tu pantalla de inicio y úsala como una app nativa, con soporte offline.
 * <img src="https://api.iconify.design/ph/lightning-fill.svg?color=%23B372CF&height=18" height="16"> **Keep-Alive:** Sistema de ping automático para evitar cold starts en Render.
 
 <br/>
