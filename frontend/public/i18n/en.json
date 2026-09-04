@@ -1,6 +1,6 @@
 {
   "learn": {
-    "title": "Learn",
+    "title": "Blog",
     "back": "Back",
     "articles": {
       "skinType": {
@@ -82,7 +82,7 @@
     "today": "Today",
     "calendar": "Month",
     "stock": "Stock",
-    "learn": "Learn"
+    "learn": "Blog"
   },
   "profile": {
     "loading": "Loading your profile...",

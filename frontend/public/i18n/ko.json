@@ -1,6 +1,6 @@
 {
   "learn": {
-    "title": "배우기",
+    "title": "블로그",
     "back": "뒤로",
     "articles": {
       "skinType": {
@@ -82,7 +82,7 @@
     "today": "오늘",
     "calendar": "캘린더",
     "stock": "재고",
-    "learn": "배우기"
+    "learn": "블로그"
   },
   "profile": {
     "loading": "프로필을 불러오는 중...",
