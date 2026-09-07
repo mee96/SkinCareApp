@@ -4,13 +4,24 @@ from groq import Groq
 from app.core.config import settings
 
 
+# Lazily builds the Groq client on first use instead of at import time. This matters because
+# an invalid/missing GROQ_API_KEY would otherwise raise during app startup (crashing every
+# route, not just the AI ones) since this module is imported eagerly by the routers.
+# lru_cache(maxsize=1) makes it a de-facto singleton: the client is created once and reused.
 @lru_cache(maxsize=1)
 def get_groq_client() -> Groq:
     return Groq(api_key=settings.GROQ_API_KEY)
 
 
 def scan_product_image(image_base64: str, media_type: str = "image/jpeg") -> dict:
-    """Envia una imatge a Groq i retorna nom, marca i slot del producte."""
+    """Envia una imatge a Groq i retorna nom, marca i slot del producte.
+
+    Uses a vision-capable model (qwen3.8-27b) since this is the only one of the three
+    AI calls that needs to interpret an actual image rather than plain text.
+    The prompt forces a strict JSON shape so the caller can parse the reply without
+    an LLM-specific SDK; explicit nulls are requested for the "can't tell" case
+    instead of leaving fields out, keeping the response shape predictable.
+    """
     response = get_groq_client().chat.completions.create(
         model="qwen/qwen3.8-27b",
         messages=[
@@ -41,7 +52,9 @@ If you cannot identify the product, return {"name": null, "brand": null, "slot_i
     
     import json
     raw = response.choices[0].message.content.strip()
-    # neteja possible markdown
+    # Models often wrap JSON in ```/```json code fences despite being told not to;
+    # strip that before parsing. No try/except here: a malformed reply should
+    # surface as a 500 to the router rather than silently returning bad data.
     if raw.startswith("```"):
         raw = raw.split("```")[1]
         if raw.startswith("json"):
@@ -50,7 +63,11 @@ If you cannot identify the product, return {"name": null, "brand": null, "slot_i
 
 
 def classify_product(name: str, brand: str | None) -> dict:
-    """Classifica un producte al seu slot de rutina a partir del nom i la marca."""
+    """Classifica un producte al seu slot de rutina a partir del nom i la marca.
+
+    Uses "groq/compound" (a fast, text-only model) since this call only needs to
+    reason over a name/brand string, not an image — no vision capability required.
+    """
     response = get_groq_client().chat.completions.create(
         model="groq/compound",
         messages=[
@@ -71,7 +88,7 @@ Brand: {brand or "unknown"}""",
 
     import json
     raw = response.choices[0].message.content.strip()
-    # neteja possible markdown
+    # Same code-fence stripping as scan_product_image (see comment there).
     if raw.startswith("```"):
         raw = raw.split("```")[1]
         if raw.startswith("json"):
@@ -79,7 +96,10 @@ Brand: {brand or "unknown"}""",
     try:
         result = json.loads(raw.strip())
     except (json.JSONDecodeError, ValueError):
-        return {"slot_id": "moisturizer"}  # fallback segur
+        # Unlike scan/check-ingredients, classification always needs a slot_id for the
+        # product to be saved — "moisturizer" is the safest default because every
+        # routine has one, so a wrong guess here is low-stakes and easy to fix later.
+        return {"slot_id": "moisturizer"}
     if not result.get("slot_id"):
         result = {"slot_id": "moisturizer"}
     return result
@@ -91,10 +111,15 @@ def check_ingredients(
     skin_type: str | None,
     concerns: list[str]
 ) -> dict:
-    """Comprova si un producte és adequat per al perfil de l'usuari."""
+    """Comprova si un producte és adequat per al perfil de l'usuari.
+
+    Also uses "groq/compound" (text-only reasoning over the user's skin profile).
+    The prompt asks for a Catalan summary plus a structured `warnings` list so the
+    frontend can render free text and bullet points without extra parsing.
+    """
     concerns_text = ", ".join(concerns) if concerns else "cap preocupació específica"
     skin_text = skin_type or "no especificat"
-    
+
     response = get_groq_client().chat.completions.create(
         model="groq/compound",
         messages=[
@@ -117,6 +142,8 @@ Preocupacions: {concerns_text}"""
     
     import json
     raw = response.choices[0].message.content.strip()
+    # No safe fallback here on purpose: guessing "suitable: true" on a parse failure
+    # could pass along unreliable skincare advice, so we'd rather bubble up a 500.
     if raw.startswith("```"):
         raw = raw.split("```")[1]
         if raw.startswith("json"):

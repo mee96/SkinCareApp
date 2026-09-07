@@ -43,6 +43,8 @@ export class StockPage implements OnInit {
 
   readonly stars = [1, 2, 3, 4, 5];
 
+  // Full product list for the current user; inStockProducts/outOfStockProducts
+  // below are derived views over this single source of truth.
   readonly products = signal<Product[]>([]);
   readonly loading = signal<boolean>(true);
 
@@ -62,6 +64,8 @@ export class StockPage implements OnInit {
   readonly showForm = signal<boolean>(false);
   readonly formName = signal<string>('');
   readonly formBrand = signal<string>('');
+  // Caches the slot_id detected by scanImage() so saveProduct() can skip the
+  // extra classify() AI call when a photo was already analyzed.
   readonly scannedSlot = signal<SlotId | null>(null);
   readonly formLoading = signal<boolean>(false);
   readonly formError = signal<string | null>(null);
@@ -90,6 +94,11 @@ export class StockPage implements OnInit {
     });
   }
 
+  /**
+   * Removes a product optimistically: the UI updates instantly instead of
+   * waiting for the network round-trip, and only rolls back if the DELETE
+   * request actually fails.
+   */
   deleteProduct(product: Product): void {
     // optimista: traiem el producte del signal; si falla, el restaurem
     const previous = this.products();
@@ -188,6 +197,11 @@ export class StockPage implements OnInit {
     this.showForm.set(false);
   }
 
+  /**
+   * Persists the product being created. If a photo was already scanned,
+   * `scannedSlot` short-circuits straight to `persistProduct` — otherwise it
+   * asks the backend to classify the slot from the name/brand text first.
+   */
   saveProduct(): void {
     const name = this.formName().trim();
     if (!name) {
@@ -231,6 +245,10 @@ export class StockPage implements OnInit {
     });
   }
 
+  /**
+   * Reads the chosen photo as base64 and sends it to the AI scan endpoint so
+   * the user doesn't have to type the product name/brand/slot by hand.
+   */
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
     const file = input.files?.[0];

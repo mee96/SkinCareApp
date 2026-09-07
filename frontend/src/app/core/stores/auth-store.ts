@@ -18,12 +18,21 @@ export class AuthStore {
   private readonly _loading = signal<boolean>(true);
 
   readonly user = this._user.asReadonly();
+  // Starts true and only flips once Firebase has resolved the session (below).
+  // Guards must check this before `isAuthenticated`, otherwise a logged-in user
+  // briefly flashes as "not authenticated" on page reload/refresh while Firebase
+  // is still restoring the session from storage, which would wrongly redirect
+  // them to /login for a split second.
   readonly loading = this._loading.asReadonly();
   readonly isAuthenticated = computed(() => this._user() !== null);
   readonly uid = computed(() => this._user()?.uid ?? null);
   readonly email = computed(() => this._user()?.email ?? null);
 
   constructor() {
+    // onAuthStateChanged fires once immediately with the restored session (or
+    // null) and again on every future login/logout — it's the single source of
+    // truth for auth state, so all other methods just call Firebase and let
+    // this listener propagate the result into the signals.
     onAuthStateChanged(firebaseAuth, (user) => {
       this._user.set(user);
       this._loading.set(false);

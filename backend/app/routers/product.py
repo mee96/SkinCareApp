@@ -60,8 +60,18 @@ class CheckIngredientsRequest(BaseModel):
     concerns: list[str] = []
 
 # --- Endpoints nous ---
+# scan-image and classify are two separate entry points into the *same* problem
+# (deciding a product's routine slot_id) so the frontend can pick whichever one
+# fits the data it actually has, instead of forcing a photo when the user only
+# typed a name. Neither endpoint writes to the DB — they're stateless AI helpers;
+# the actual product row is only created afterwards via POST /products.
 @router.post("/scan-image")
 def scan_image(payload: ScanImageRequest):
+    """Best-effort detection of name/brand/slot from a product photo.
+
+    Called first when the user adds a product via camera: if it succeeds, the
+    frontend caches the detected slot and skips calling /classify entirely.
+    """
     try:
         result = scan_product_image(payload.image_base64, payload.media_type)
         return result
@@ -70,6 +80,11 @@ def scan_image(payload: ScanImageRequest):
 
 @router.post("/classify")
 def classify(payload: ClassifyProductRequest):
+    """Text-only fallback classification, used when there is no photo to scan.
+
+    This is the second step of the scan -> classify flow: it only runs when the
+    user typed a product name/brand manually instead of using the camera.
+    """
     try:
         result = classify_product(payload.name, payload.brand)
         return result
