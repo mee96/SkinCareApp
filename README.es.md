@@ -25,7 +25,7 @@
 [![API Docs](https://img.shields.io/badge/📖_API_Docs-b8e8d4?style=flat-square&logoColor=2d1b6e)](https://skincareapp-api.onrender.com/docs)
 &nbsp;
 [![Issues](https://img.shields.io/badge/🐛_Issues-a8c4f0?style=flat-square&logoColor=2d1b6e)](https://github.com/mee96/SkinCareApp/issues)
-[![Keep Alive Active](https://img.shields.io/badge/Keep--Alive-Active-b8e8d4?style=flat-square&logo=githubactions&logoColor=2d1b6e)](https://github.com/mee96/keep-alive)
+![Render Free Tier](https://img.shields.io/badge/Render_Free_Tier-Cold_start_~1_min-f0e4a0?style=flat-square&logo=render&logoColor=2d1b6e)
 
 </div>
 
@@ -53,7 +53,7 @@ Construido como un **monorepo** que combina un frontend en **Angular** (componen
 | <img src="https://api.iconify.design/ph/key-fill.svg?color=%232FB5AE&height=18" height="16"> **Autenticación** | Firebase Authentication (Email + Google) |
 | <img src="https://api.iconify.design/ph/sparkle-fill.svg?color=%23E0A63B&height=18" height="16"> **IA** | Groq (escaneo de productos, clasificación, análisis de ingredientes) |
 | <img src="https://api.iconify.design/ph/translate-fill.svg?color=%23FF6FA8&height=18" height="16"> **i18n** | ngx-translate · CA / ES / EN / 한국어 |
-| <img src="https://api.iconify.design/ph/rocket-launch-fill.svg?color=%23E0A63B&height=18" height="16"> **Deploy** | Render (Frontend + Backend) · Keep-Alive contra cold starts |
+| <img src="https://api.iconify.design/ph/rocket-launch-fill.svg?color=%23E0A63B&height=18" height="16"> **Deploy** | Render (Frontend + Backend) · Plan gratuito (cold start en la primera petición) |
 
 <br/>
 
@@ -143,7 +143,7 @@ GET    /catalog/ingredients → Información de ingredientes</code></pre>
 pip install -r requirements.txt
 cp .env.example .env    # Completa las credenciales
 uvicorn app.main:app --reload</code></pre>
-> ⚡ **Disponibilidad:** El backend se mantiene activo sin *cold starts* gracias a un ping automático de [Keep-Alive](https://github.com/mee96/keep-alive).
+> ⏳ **Disponibilidad:** El backend está alojado en el plan gratuito de Render y se suspende tras un periodo de inactividad. La primera petición puede tardar 30–60 segundos mientras el servidor arranca; después responde con normalidad.
 >
 ### Frontend
 <pre><code>cd frontend
@@ -182,7 +182,6 @@ GROQ_API_KEY=...</code></pre>
 * <img src="https://api.iconify.design/ph/book-open-fill.svg?color=%235B9BD5&height=18" height="16"> **Aprender:** 4 artículos educativos, disponibles en 4 idiomas.
 * <img src="https://api.iconify.design/ph/user-circle-fill.svg?color=%23FF6FA8&height=18" height="16"> **Perfil:** Tipo de piel, preocupaciones, logout.
 * <img src="https://api.iconify.design/ph/translate-fill.svg?color=%23E0A63B&height=18" height="16"> **i18n completo:** Catalán, castellano, inglés y 한국어.
-* <img src="https://api.iconify.design/ph/lightning-fill.svg?color=%23B372CF&height=18" height="16"> **Keep-Alive:** Sistema de ping automático para evitar cold starts en Render.
 
 <br/>
 
