@@ -1,0 +1,11 @@
+# Store text files with LF line endings in the repo, whatever the OS.
+# Prevents Windows CRLF commits from rewriting every line (see #14).
+* text=auto eol=lf
+
+# Binary files: never touch
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
+*.webp binary
+*.pem binary
