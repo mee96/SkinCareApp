@@ -32,6 +32,7 @@ For the full project overview (complete stack, features, live demo) see the [rep
 | <img src="https://api.iconify.design/ph/key-fill.svg?color=%232FB5AE&height=18" height="16"> **Auth** | Firebase Authentication (Email + Google) |
 | <img src="https://api.iconify.design/ph/translate-fill.svg?color=%23E0A63B&height=18" height="16"> **i18n** | ngx-translate · CA / ES / EN / 한국어 |
 | <img src="https://api.iconify.design/ph/shapes-fill.svg?color=%23B372CF&height=18" height="16"> **Icons** | Lucide |
+| <img src="https://api.iconify.design/ph/device-mobile-fill.svg?color=%232FB5AE&height=18" height="16"> **PWA** | Installable via Angular Service Worker (`@angular/pwa`), offline-ready |
 | <img src="https://api.iconify.design/ph/rocket-launch-fill.svg?color=%23E0A63B&height=18" height="16"> **Deploy** | Render (Static Site) |
 
 <br/>
@@ -56,7 +57,9 @@ For the full project overview (complete stack, features, live demo) see the [rep
     │   ├── stores/       → AuthStore (signals)
     │   ├── models/
     │   └── guards/
-    └── shared/           → Shell, shared UI</code></pre>
+    └── shared/
+        ├── shell/        → App shell (top bar, tab bar)
+        └── ui/            → Shared UI, incl. skincare-chat (AI advisor widget)</code></pre>
 
 <br/>
 
@@ -85,6 +88,15 @@ ng test           # unit tests with Vitest</code></pre>
 ## <img src="https://api.iconify.design/ph/sliders-horizontal-fill.svg?color=%23FF6FA8&height=24" height="22"> &nbsp;Configuration
 
 `apiUrl` and the Firebase config are defined in `src/environments/environment.ts` (production) and `environment.development.ts` (local `ng serve`).
+
+<br/>
+
+---
+
+## <img src="https://api.iconify.design/ph/sparkle-fill.svg?color=%235B9BD5&height=24" height="22"> &nbsp;Notable frontend features
+
+* <img src="https://api.iconify.design/ph/chat-circle-dots-fill.svg?color=%23FF6FA8&height=18" height="16"> **AI skincare chat:** a floating widget (`shared/ui/skincare-chat`), available app-wide from the shell, talks to the Groq-powered `/chat/skincare` endpoint.
+* <img src="https://api.iconify.design/ph/device-mobile-fill.svg?color=%232FB5AE&height=18" height="16"> **PWA:** installable and offline-ready via `@angular/pwa` — manifest at `public/manifest.webmanifest`, service worker config at `ngsw-config.json`.
 
 <br/>
 

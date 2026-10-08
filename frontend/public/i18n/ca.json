@@ -1,6 +1,6 @@
 {
   "learn": {
-    "title": "Aprendre",
+    "title": "Blog",
     "back": "Tornar",
     "articles": {
       "skinType": {
@@ -82,7 +82,7 @@
     "today": "Avui",
     "calendar": "Mes",
     "stock": "Stock",
-    "learn": "Aprendre"
+    "learn": "Blog"
   },
   "profile": {
   "loading": "Carregant el teu perfil...",
@@ -131,6 +131,12 @@
     "googleRegisterFailed": "No s'ha pogut completar el registre amb Google.",
     "missingFields": "Posa el teu nom i tria el tipus de pell per continuar."
   }
+},
+"chat": {
+  "title": "Assessora de skincare",
+  "placeholder": "Pregunta'm sobre skincare...",
+  "welcome": "Hola! Sóc la teva assessora de skincare 🌸 Pregunta'm el que vulguis sobre la teva rutina, productes o ingredients.",
+  "thinking": "Escrivint..."
 },
 "calendar": {
   "loading": "Carregant el calendari...",
