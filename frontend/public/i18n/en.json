@@ -1,6 +1,6 @@
 {
   "learn": {
-    "title": "Learn",
+    "title": "Blog",
     "back": "Back",
     "articles": {
       "skinType": {
@@ -82,7 +82,7 @@
     "today": "Today",
     "calendar": "Month",
     "stock": "Stock",
-    "learn": "Learn"
+    "learn": "Blog"
   },
   "profile": {
     "loading": "Loading your profile...",
@@ -131,6 +131,12 @@
       "googleRegisterFailed": "Couldn't complete registration with Google.",
       "missingFields": "Enter your name and choose a skin type to continue."
     }
+  },
+  "chat": {
+    "title": "Skincare advisor",
+    "placeholder": "Ask me about skincare...",
+    "welcome": "Hi! I'm your skincare advisor 🌸 Ask me anything about your routine, products or ingredients.",
+    "thinking": "Typing..."
   },
   "calendar": {
     "loading": "Loading calendar...",
