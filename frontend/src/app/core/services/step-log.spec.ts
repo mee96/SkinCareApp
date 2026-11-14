@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { StepLog } from './step-log';
+import { StepLogApi } from './step-log';
 
-describe('StepLog', () => {
-  let service: StepLog;
+describe('StepLogApi', () => {
+  let service: StepLogApi;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(StepLog);
+    service = TestBed.inject(StepLogApi);
   });
 
   it('should be created', () => {
