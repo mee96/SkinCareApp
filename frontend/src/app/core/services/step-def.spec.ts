@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { StepDef } from './step-def';
+import { StepDefApi } from './step-def';
 
-describe('StepDef', () => {
-  let service: StepDef;
+describe('StepDefApi', () => {
+  let service: StepDefApi;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(StepDef);
+    service = TestBed.inject(StepDefApi);
   });
 
   it('should be created', () => {

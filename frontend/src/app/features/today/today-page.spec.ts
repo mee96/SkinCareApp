@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideTranslateService } from '@ngx-translate/core';
 
 import { TodayPage } from './today-page';
 
@@ -9,6 +10,7 @@ describe('TodayPage', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [TodayPage],
+      providers: [provideTranslateService()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(TodayPage);
