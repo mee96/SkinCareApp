@@ -6,6 +6,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 import { Schedule } from '../../core/services/schedule';
 import { DayExceptionService } from '../../core/services/day-exception.service';
 import { AuthStore } from '../../core/stores/auth-store';
+import { toLocalDateKey } from '../../core/utils/local-date';
 import { RoutineTypeCode } from '../../core/models/schedule';
 import { DayException } from '../../core/models/day-exception';
 
@@ -34,7 +35,7 @@ export class CalendarPage implements OnInit {
   readonly PencilIcon = Pencil;
   readonly Trash2Icon = Trash2;
 
-  readonly today = new Date().toISOString().slice(0, 10);
+  readonly today = toLocalDateKey(new Date());
 
   readonly loading = signal(true);
   readonly viewYear = signal(new Date().getFullYear());
