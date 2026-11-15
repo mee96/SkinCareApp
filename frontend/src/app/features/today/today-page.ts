@@ -6,6 +6,7 @@ import { StepDefApi } from '../../core/services/step-def';
 import { StepLogApi } from '../../core/services/step-log';
 import { StepDef } from '../../core/models/step-def';
 import { AuthStore } from '../../core/stores/auth-store';
+import { toLocalDateKey } from '../../core/utils/local-date';
 
 interface StepView extends StepDef {
   done: boolean;
@@ -36,7 +37,7 @@ export class TodayPage implements OnInit {
   readonly MoonIcon = Moon;
   readonly CheckIcon = Check;
 
-  readonly today = new Date().toISOString().slice(0, 10);
+  readonly today = toLocalDateKey(new Date());
   readonly loading = signal(true);
   readonly routineType = signal<string | null>(null);
   readonly steps = signal<StepView[]>([]);
